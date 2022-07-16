@@ -1,1 +1,3 @@
-# my-library
+# My Library
+
+## React.js project
