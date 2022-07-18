@@ -2,9 +2,10 @@ import React from 'react';
 
 import {styled} from '@mui/material/styles'
 
-import {Button, TextField} from '@mui/material'
+import {Button, TextField, InputLabel, OutlinedInput} from '@mui/material'
 
 function Login() {
+    
   return (
     <Form>
         <Legend>
@@ -12,10 +13,12 @@ function Login() {
         </Legend>
         <FormContainer>
             <InputContainer>
-                <Input placeholder='Nome do usuário' id="outlined-basic" label="Usuário" variant="outlined" />
+                <InputLabel>Usuário</InputLabel>
+                <CustomOutlinedInput/>
             </InputContainer>
             <InputContainer>
-                <Input placeholder='Senha do usuário' id="outlined-basic" label="Senha" variant="outlined" />
+                <InputLabel>Senha</InputLabel>
+                <CustomOutlinedInput/>
             </InputContainer>
             <SubmitButton variant="contained">Entrar</SubmitButton>
             <ForgotPassword>Esqueceu a senha?</ForgotPassword>
@@ -23,6 +26,10 @@ function Login() {
     </Form>
   )
 }
+
+const CustomOutlinedInput = styled(OutlinedInput)`
+    height: 35px;
+`
 
 const ForgotPassword = styled('a')`
     color: blue;
@@ -39,12 +46,11 @@ const ForgotPassword = styled('a')`
 
 `
 const Form = styled('div')`
+    position: absolute;
     background-color: whitesmoke;
-    background-color: whitems;
     width: 450px;
     max-width: 100%;
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-    border-radius: 5px;
 `
 
 const FormContainer = styled('div')`
@@ -58,9 +64,8 @@ const FormContainer = styled('div')`
 
 const Legend = styled('legend')`
     padding: 5px 15px 5px 15px;
-    background-color: #3CB371;
+    background-color: #00655d;
     width: 100%;
-    border-radius: 5px;
 
     #title {
         text-align: center;
@@ -97,11 +102,11 @@ const SubmitButton = styled(Button)`
     font-family: sans-serif;
     font-size: 1.2rem;
     border-radius: 8px;
-    background-color: #3CB371;
+    background-color: #00655d;
     cursor: pointer;
 
     :hover {
-        background-color: #369460;
+        background-color: #004d46;
     }
 `
 

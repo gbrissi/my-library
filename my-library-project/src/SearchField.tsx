@@ -28,6 +28,7 @@ const BarLabel = styled(InputLabel)`
 `
 
 const InputBar = styled(OutlinedInput)`
+  background-color: white;
     width: 100%;
 `
 

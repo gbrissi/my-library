@@ -1,14 +1,19 @@
 import React from 'react';
+import {useState} from 'react';
 
 import {styled} from '@mui/material/styles';
 
 import {AppBar, Button} from '@mui/material'
 
+import Login from './Login';
 import mySiteLogo from './images/site-logo-header.png'
 import MenuIcon from '@mui/icons-material/Menu';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 
 const Header = () => {
+
+  const [active, setActive] = useState('disabled')
+
   return (
     <HeaderContainer>
       <Content>
@@ -17,13 +22,49 @@ const Header = () => {
           <SiteName>MY LIBRARY</SiteName>
         </LogoContainer>
         <UtilsContainer>
-          <SignIn variant="contained">Sign In</SignIn>
+          <SignIn onClick={() => setActive('active')} variant="contained">Sign In</SignIn>
+          {active === 'active' && 
+          <div>
+            <Modal >
+              <NoContainer onClick={() => setActive('disabled')}></NoContainer>
+              <Login/>
+            </Modal>
+          </div>
+          }
           <HamburguerIcon></HamburguerIcon>
         </UtilsContainer>
       </Content>
     </HeaderContainer>
   )
 }
+
+const NoContainer = styled('div')`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #0000005e;
+    width: 100vw;
+    height: 100vh;
+`
+
+const Modal = styled('div')`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #0000005e;
+    width: 100vw;
+    height: 100vh;
+`
 
 const HeaderContainer = styled(AppBar)`
   height: 50px;
