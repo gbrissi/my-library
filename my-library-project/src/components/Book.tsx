@@ -19,7 +19,7 @@ function Book() {
 export default Book
 
 const BookCard = styled(Card)`
-    width: 200px;
+    width: 205px;
     height: 350px;
     margin: 10px;
     background-color: #fcfafa;

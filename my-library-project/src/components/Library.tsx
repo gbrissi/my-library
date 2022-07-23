@@ -8,7 +8,7 @@ import { Container } from '@mui/material';
 
 function Library() {
   return (
-    <BooksContainer>
+    <BooksContainer disableGutters>
         <Book/>
         <Book/>
         <Book/>     
