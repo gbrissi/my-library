@@ -1,6 +1,6 @@
 import React from 'react'
 
-import bookImg from '../images/catching-fire.jpg'
+import bookImg from '../assets/images/catching-fire.jpg'
 
 import {styled} from '@mui/material/styles';
 

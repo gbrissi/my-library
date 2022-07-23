@@ -6,7 +6,7 @@ import {makeStyles, styled} from '@mui/material/styles';
 import {AppBar, Button, SwipeableDrawer, Container, Select} from '@mui/material'
 
 import Login from './Login';
-import mySiteLogo from '../images/site-logo-header.png'
+import mySiteLogo from '../assets/images/site-logo-header.png'
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 
 //initial variables
