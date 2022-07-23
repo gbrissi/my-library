@@ -3,16 +3,31 @@ import {useState} from 'react';
 
 import {styled} from '@mui/material/styles';
 
-import {AppBar, Button} from '@mui/material'
+import {AppBar, Button, Menu} from '@mui/material'
 
 import Login from './Login';
 import mySiteLogo from './images/site-logo-header.png'
 import MenuIcon from '@mui/icons-material/Menu';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 
+var isItSelected = false;
 const Header = () => {
 
-  const [active, setActive] = useState('disabled')
+  //open/close login modal
+  const [active, setActive] = useState(false)
+
+  //change the stylization of menu icon
+  const [isSelected, setIsSelected] = useState(false)
+
+  var checkState = function(arg: boolean) {
+    if(arg === false) {
+      isItSelected = true;
+    } else {
+      isItSelected = false;
+    }
+    console.log(isItSelected)
+    return isItSelected;
+  }
 
   return (
     <HeaderContainer>
@@ -22,16 +37,35 @@ const Header = () => {
           <SiteName>MY LIBRARY</SiteName>
         </LogoContainer>
         <UtilsContainer>
-          <SignIn onClick={() => setActive('active')} variant="contained">Sign In</SignIn>
-          {active === 'active' && 
+          <SignIn onClick={() => setActive(true)} variant="contained">Sign In</SignIn>
+          {active && 
           <div>
             <Modal >
-              <NoContainer onClick={() => setActive('disabled')}></NoContainer>
+              <NoContainer onClick={() => setActive(false)}></NoContainer>
               <Login/>
             </Modal>
           </div>
           }
-          <HamburguerIcon></HamburguerIcon>
+          <IconContainer onClick={() => {
+            setIsSelected(checkState(isItSelected))
+          }}>
+            { isSelected &&
+              <HamburguerIcon
+              icontransform={'translateX(-50px)'}
+              iconbackground={'transparent'}
+              iconboxshadow={'none'}
+              iconbeforetransform={'rotate(45deg) translate(35px, -35px)'}
+              iconaftertransform={'rotate(-45deg) translate(35px, 35px)'}
+            >
+              </HamburguerIcon>
+            }
+            { !isSelected &&
+              <HamburguerIcon
+            >
+              </HamburguerIcon>
+            }
+
+          </IconContainer>
         </UtilsContainer>
       </Content>
     </HeaderContainer>
@@ -87,9 +121,59 @@ const SignIn = styled(Button)`
       background-color: #262626;
     }
 `
-const HamburguerIcon = styled(MenuIcon)`
-  font-size: 2rem;
+const IconContainer = styled('div')`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
   cursor: pointer;
+  transition: all .5s ease-in-out;
+`
+
+interface myProps {
+  icontransform?: string;
+  iconbackground?: string;
+  iconboxshadow?: string;
+  iconbeforetransform?:  string;
+  iconaftertransform?: string;
+}
+
+const HamburguerIcon = styled('div')`
+  width: 20px;
+  height: 2px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(255,101,47,.2);
+  transition: all .5s ease-in-out;
+  transform: ${(props: myProps) => props.icontransform};
+  background: ${(props: myProps) => props.iconbackground};
+  box-shadow: ${(props: myProps) => props.iconboxshadow};
+
+
+  ::before {
+    transform: translateY(-6px);
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(255,101,47,.2);
+    transition: all .5s ease-in-out;
+    transform: ${(props: myProps) => props.iconbeforetransform};
+  }
+
+  ::after {
+    transform: translateY(6px);
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(255,101,47,.2);
+    transition: all .5s ease-in-out;
+    transform: ${(props: myProps) => props.iconaftertransform};
+  }
+
 `
 
 const UtilsContainer = styled('div')`
