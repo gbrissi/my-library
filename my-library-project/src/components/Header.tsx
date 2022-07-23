@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState} from 'react';
+import {Link} from 'react-router-dom'
 
 import {makeStyles, styled} from '@mui/material/styles';
 
@@ -59,8 +60,7 @@ const Header = () => {
                 iconbeforetransform={'rotate(45deg) translate(35px, -35px)'}
                 iconaftertransform={'rotate(-45deg) translate(35px, 35px)'}
               >
-              </HamburguerIcon>
-              
+              </HamburguerIcon>   
               <SwipeableDrawer 
                 anchor='right'
                 open={true}
@@ -73,9 +73,9 @@ const Header = () => {
               >
                 <DrawerContainer>
                   <DrawerHeading>Menu</DrawerHeading>
-                  <DrawerItem>Potato</DrawerItem>
-                  <DrawerItem>Beans</DrawerItem>
-                  <DrawerItem>Lettuce</DrawerItem>
+                  <DrawerItem to='/potato'>Potato</DrawerItem>
+                  <DrawerItem to='/beans'>Beans</DrawerItem>
+                  <DrawerItem to='/lettuce'>Lettuce</DrawerItem>
                 </DrawerContainer>
               </SwipeableDrawer>
             </div>
@@ -153,7 +153,8 @@ const DrawerContainer = styled(Container)`
   height: 100%;
 `
 
-const DrawerItem = styled('a')`
+const DrawerItem = styled(Link)`
+  text-decoration: none;
   cursor: pointer;
   font-size: 1.2rem;
   color: white;
