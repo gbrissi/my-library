@@ -10,7 +10,10 @@ import mySiteLogo from './images/site-logo-header.png'
 import MenuIcon from '@mui/icons-material/Menu';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 
+//initial variables
 var isItSelected = false;
+
+//header component
 const Header = () => {
 
   //open/close login modal
@@ -25,7 +28,6 @@ const Header = () => {
     } else {
       isItSelected = false;
     }
-    console.log(isItSelected)
     return isItSelected;
   }
 
@@ -77,6 +79,7 @@ const NoContainer = styled('div')`
     justify-content: center;
     align-items: center;
     position: absolute;
+    z-index: 998;
     left: 0;
     right: 0;
     top: 0;
@@ -144,11 +147,10 @@ const HamburguerIcon = styled('div')`
   height: 2px;
   background: #fff;
   box-shadow: 0 2px 5px rgba(255,101,47,.2);
-  transition: all .5s ease-in-out;
   transform: ${(props: myProps) => props.icontransform};
   background: ${(props: myProps) => props.iconbackground};
   box-shadow: ${(props: myProps) => props.iconboxshadow};
-
+  transition: all .5s ease-in-out;
 
   ::before {
     transform: translateY(-6px);

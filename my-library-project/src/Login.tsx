@@ -1,11 +1,26 @@
 import React from 'react';
+import { useState } from 'react';
 
 import {styled} from '@mui/material/styles'
 
-import {Button, TextField, InputLabel, OutlinedInput} from '@mui/material'
+import {Button, TextField, InputLabel, OutlinedInput, InputAdornment} from '@mui/material'
+import IconButton from '@mui/material/IconButton';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
+var visibility = false
 function Login() {
-    
+
+  const [isVisible, setIsVisible] = useState(false);
+    var handleClickShowPassword = function(arg: boolean) {
+        if(arg === false) {
+        visibility = true;
+        } else {
+        visibility = false;
+        }
+        return visibility;
+    }
+
   return (
     <Form>
         <Legend>
@@ -18,7 +33,20 @@ function Login() {
             </InputContainer>
             <InputContainer>
                 <InputLabel>Senha</InputLabel>
-                <CustomOutlinedInput/>
+                <CustomOutlinedInput type={visibility ? 'text' : 'password'} endAdornment={
+                    <InputAdornment position='end'>
+                        <IconButton edge='end' onClick={() => {
+                            setIsVisible(handleClickShowPassword(visibility))
+                        }}>
+                            { isVisible &&
+                                <Visibility/>
+                            }
+                            { !isVisible &&
+                                <VisibilityOff/>
+                            }
+                        </IconButton>
+                    </InputAdornment>
+                }/>
             </InputContainer>
             <SubmitButton variant="contained">Entrar</SubmitButton>
             <ForgotPassword>Esqueceu a senha?</ForgotPassword>
@@ -47,6 +75,7 @@ const ForgotPassword = styled('a')`
 `
 const Form = styled('div')`
     position: absolute;
+    z-index: 999;
     background-color: whitesmoke;
     width: 450px;
     max-width: 100%;
