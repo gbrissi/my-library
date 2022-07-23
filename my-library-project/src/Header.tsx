@@ -72,15 +72,13 @@ const Header = () => {
                 }}
               >
                 <DrawerContainer>
-                  <DrawerHeading>Content</DrawerHeading>
+                  <DrawerHeading>Menu</DrawerHeading>
                   <DrawerItem>Potato</DrawerItem>
                   <DrawerItem>Beans</DrawerItem>
                   <DrawerItem>Lettuce</DrawerItem>
                 </DrawerContainer>
               </SwipeableDrawer>
             </div>
-  
- 
             }
             { !isSelected &&
               <HamburguerIcon
@@ -151,7 +149,7 @@ const DrawerContainer = styled(Container)`
   flex-direction: column;
   background-color: #434343;
   padding: 25px;
-  width: 100%;
+  width: 250px;
   height: 100%;
 `
 
@@ -162,11 +160,13 @@ const DrawerItem = styled('a')`
   text-align: center;
   padding: 25px;
   border-bottom: 1px solid #585858;
+  width: 100%;
 `
 
 const DrawerHeading = styled('h2')`
   font-size: 1.3rem;
   font-weight: bolder;
+  width: 100%;
   color: white;
   font-family: 'Roboto', sans-serif;
   padding: 25px;
