@@ -1,13 +1,12 @@
 import React from 'react';
 import {useState} from 'react';
 
-import {styled} from '@mui/material/styles';
+import {makeStyles, styled} from '@mui/material/styles';
 
-import {AppBar, Button, Menu} from '@mui/material'
+import {AppBar, Button, SwipeableDrawer, Container, Select} from '@mui/material'
 
 import Login from './Login';
 import mySiteLogo from './images/site-logo-header.png'
-import MenuIcon from '@mui/icons-material/Menu';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 
 //initial variables
@@ -49,17 +48,39 @@ const Header = () => {
           </div>
           }
           <IconContainer onClick={() => {
-            setIsSelected(checkState(isItSelected))
+            setIsSelected(checkState(isItSelected)), (true)
           }}>
             { isSelected &&
+            <div>
               <HamburguerIcon
-              icontransform={'translateX(-50px)'}
-              iconbackground={'transparent'}
-              iconboxshadow={'none'}
-              iconbeforetransform={'rotate(45deg) translate(35px, -35px)'}
-              iconaftertransform={'rotate(-45deg) translate(35px, 35px)'}
-            >
+                icontransform={'translateX(-50px)'}
+                iconbackground={'transparent'}
+                iconboxshadow={'none'}
+                iconbeforetransform={'rotate(45deg) translate(35px, -35px)'}
+                iconaftertransform={'rotate(-45deg) translate(35px, 35px)'}
+              >
               </HamburguerIcon>
+              
+              <SwipeableDrawer 
+                anchor='right'
+                open={true}
+                onClose={() => {
+                  console.log('closed')
+                }}
+                onOpen={() => {
+                  console.log('open')
+                }}
+              >
+                <DrawerContainer>
+                  <DrawerHeading>Content</DrawerHeading>
+                  <DrawerItem>Potato</DrawerItem>
+                  <DrawerItem>Beans</DrawerItem>
+                  <DrawerItem>Lettuce</DrawerItem>
+                </DrawerContainer>
+              </SwipeableDrawer>
+            </div>
+  
+ 
             }
             { !isSelected &&
               <HamburguerIcon
@@ -124,6 +145,35 @@ const SignIn = styled(Button)`
       background-color: #262626;
     }
 `
+const DrawerContainer = styled(Container)`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: #434343;
+  padding: 25px;
+  width: 100%;
+  height: 100%;
+`
+
+const DrawerItem = styled('a')`
+  font-size: 1.2rem;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  padding: 25px;
+  border-bottom: 1px solid #585858;
+`
+
+const DrawerHeading = styled('h2')`
+  font-size: 1.3rem;
+  font-weight: bolder;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  padding: 25px;
+  text-align: center;
+  border-bottom: 1px solid #585858;
+`
+
 const IconContainer = styled('div')`
   display: flex;
   justify-content: center;
