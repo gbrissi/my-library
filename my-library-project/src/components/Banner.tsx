@@ -2,7 +2,7 @@ import React from 'react'
 
 import {styled} from '@mui/material/styles';
 
-import imgLogo from './images/site-logo.png'
+import imgLogo from '../images/site-logo.png'
 import MenuIcon from '@mui/icons-material/Menu';
 
 function Banner() {
