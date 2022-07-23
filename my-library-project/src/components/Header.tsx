@@ -154,11 +154,12 @@ const DrawerContainer = styled(Container)`
 `
 
 const DrawerItem = styled('a')`
+  cursor: pointer;
   font-size: 1.2rem;
   color: white;
   font-family: 'Roboto', sans-serif;
   text-align: center;
-  padding: 25px;
+  padding: 15px;
   border-bottom: 1px solid #585858;
   width: 100%;
 `
