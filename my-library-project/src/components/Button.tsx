@@ -10,9 +10,4 @@ function Potato() {
   )
 }
 
-const MyComponent = styled(Button)`
-    background-color: red;
-
-`
-
 export default Potato
