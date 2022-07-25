@@ -1,12 +1,16 @@
-const client = require('knex')({
+const { Model } = require('objection')
+
+const knex = require('knex')({
     client: 'pg',
     connection: {
         host: 'localhost',
-        port: 4000,
+        port: 5432,
         user: 'postgres',
         password: 'admin',
         database: 'my-library'
     }
   });
 
-module.exports = client
+Model.knex(knex);
+
+module.exports = knex
