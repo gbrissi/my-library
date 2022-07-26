@@ -32,7 +32,6 @@ function Login() {
         const password = document.getElementById('password') as HTMLFormElement
         const usernamePassword = {'username': username.value, 'password': password.value} 
         
-        console.log(usernamePassword)
         axios.post('https://library-online-webproject.herokuapp.com/users/login', usernamePassword).then(res => {
             if(res.data == 'Success') {
                 console.log('Connected with success')
