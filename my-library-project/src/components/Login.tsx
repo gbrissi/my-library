@@ -31,7 +31,9 @@ function Login() {
         const usernamePassword = {'username': username.value, 'password': password.value} 
         
         console.log(usernamePassword)
-        axios.post('https://library-online-webproject.herokuapp.com/users/login', usernamePassword)
+        axios.post('https://library-online-webproject.herokuapp.com/users/login', usernamePassword).then(res => {
+            console.log(res)
+        })
         
     }
 
