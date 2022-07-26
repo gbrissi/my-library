@@ -21,6 +21,11 @@ async function main() {
    const users = await User.query();
 
    //API
+
+   app.get('/', (req, res) => {
+        res.status(200).send(users)
+   })
+
     app.post('/users/login', async (req, res) => {
         const person = users.find(person => person.username = req.body.username)
         if (person == null) {
