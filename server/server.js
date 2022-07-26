@@ -15,8 +15,6 @@ const corsOption = {
 //if you want in every domain then
 app.use(express.json())
 app.use(cors(corsOption));
-app.use(cors())
-
 
 const port = process.env.PORT || 3001;
 
@@ -48,15 +46,15 @@ async function main() {
             }
         }
         if (user) {
-            if (await bcrypt.compare(req.body.password, user.password)) {
+            if (await bcrypt.compare(req.body.password, user.password), 10) {
                 console.log('Success')
-                return res.status(200).send('Success')
+                res.status(200).send('Success')
             } else {
                 console.log('Not Allowed')
-                return res.status(200).send('Not Allowed')
+                res.status(200).send('Not Allowed')
             } 
         } else {
-            return res.status(200).send('Cannot find person')
+            res.status(200).send('Cannot find person')
         }
     })
 
