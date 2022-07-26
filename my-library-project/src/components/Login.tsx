@@ -12,8 +12,6 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 var visibility = false
 function Login() {
 
-  const [isUpdated, setIsUpdated] = useState(false);
-
   const [isVisible, setIsVisible] = useState(false);
     var handleClickShowPassword = function(arg: boolean) {
         if(arg === false) {
