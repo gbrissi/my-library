@@ -54,10 +54,12 @@ async function main() {
                     } catch (error) {
                         res.send('some shit error fvck')
                     }            
-                }
+                } else (
+                    res.send('Cannot find person')
+                )
             }
         } catch (error) {
-            res.status(200).send('Cannot find person')
+            res.send('A wild error appears!: ', error)
         }
     })
 
