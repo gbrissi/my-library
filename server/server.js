@@ -41,8 +41,7 @@ async function main() {
             return res.status(400).send('Cannot find person')
         } try {
             if(await bcrypt.compare(req.body.password, person.password)) {
-                app.get()
-                res.send('Success')
+                res.status(200).send('Success')
             } else {
                 const serverResponse = 'Not Allowed'
                 res.send(serverResponse)
