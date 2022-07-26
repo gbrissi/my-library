@@ -39,26 +39,25 @@ async function main() {
 
     app.post('/users/login', async (req, res) => {
         let user = false
-        for(i=0; i<users.length ;i++) {
-            if(req.body.username == users[i].username){
-                user = true
+        try {
+            for(i=0; i<users.length ;i++) {
+                if(req.body.username == users[i].username){
+                    try {
+                        bcrypt.compare(req.body.password, users[i].password, function(error, response) {
+                            if(error) {
+                                res.send('Error')
+                            } if(response) {
+                                res.send('Success')
+                            } else {
+                                res.send('Password does not match')
+                            }
+                        })
+                    } catch (error) {
+                        res.send('some shit error fvck')
+                    }            
+                }
             }
-        }
-        if (user) {
-            try {
-                res.send('bcrypt is the problem')
-            } catch (error) {
-                res.send('some shit error fvck')
-            }            
-            
-            /*if () {
-                console.log('Success')
-                res.status(200).send('Success')
-            } else {
-                console.log('Not Allowed')
-                res.status(200).send('Not Allowed')
-            } */
-        } else {
+        } catch (error) {
             res.status(200).send('Cannot find person')
         }
     })
