@@ -1,0 +1,8 @@
+{
+  "name": "my-library",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/gbrissi/my-library.git",
+  "author": "Gabriel Rissi <gbrissi123@gmail.com>",
+  "license": "MIT"
+}
