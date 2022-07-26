@@ -42,8 +42,7 @@ async function main() {
                 user = true
             }
         }
-        console.log(user)
-        if (user == false) {
+        if (user == true) {
             return res.status(200).send('Cannot find person')
         } try {
             if(await bcrypt.compare(req.body.password, user.password)) {

@@ -33,6 +33,7 @@ function Login() {
         const usernamePassword = {'username': username.value, 'password': password.value} 
         
         axios.post('https://library-online-webproject.herokuapp.com/users/login', usernamePassword).then(res => {
+            console.log(res)
             if(res.data == 'Success') {
                 console.log('Connected with success')
                 navigate('/potato')
