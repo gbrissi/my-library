@@ -15,6 +15,8 @@ function Login() {
 
   let navigate = useNavigate()
 
+  const [isValid, setIsValid] = useState(true);
+
   const [isVisible, setIsVisible] = useState(false);
     var handleClickShowPassword = function(arg: boolean) {
         if(arg === false) {
@@ -25,16 +27,19 @@ function Login() {
         return visibility;
     }
 
-    function postData() {
+    function postData(): boolean {
         const username = document.getElementById('user') as HTMLFormElement
         const password = document.getElementById('password') as HTMLFormElement
         const usernamePassword = {'username': username.value, 'password': password.value} 
         
         console.log(usernamePassword)
         axios.post('https://library-online-webproject.herokuapp.com/users/login', usernamePassword).then(res => {
-            console.log(res)
+            if(res.data == 'Success') {
+                console.log('Connected with success')
+                navigate('/potato')
+            } 
         })
-        
+        return false
     }
 
   return (
@@ -43,6 +48,10 @@ function Login() {
             <h1 id='title'>LOGIN</h1>
         </Legend>
         <FormContainer>
+            {
+                !isValid &&
+                <ErrorCode>Usuário e/ou senha incorretos</ErrorCode>
+            }
             <InputContainer>
                 <InputLabel>Usuário</InputLabel>
                 <CustomOutlinedInput id='user'/>
@@ -64,15 +73,21 @@ function Login() {
                     </InputAdornment>
                 }/>
             </InputContainer>
-            <SubmitButton onClick={() => {postData()}} variant="contained">Entrar</SubmitButton>
+            <SubmitButton onClick={() => {postData(), setIsValid(postData())}} variant="contained">Entrar</SubmitButton>
             <ForgotPassword>Esqueceu a senha?</ForgotPassword>
         </FormContainer>
     </Form>
   )
 }
 
+const ErrorCode = styled('p')`
+    font-family: 'Roboto' sans-serif;
+    font-size: 1.1rem;
+    color: red;
+    text-decoration: underline;
+`
+
 const CustomOutlinedInput = styled(OutlinedInput)`
-    height: 35px;
 `
 
 const ForgotPassword = styled('a')`
@@ -99,6 +114,7 @@ const Form = styled('form')`
 `
 
 const FormContainer = styled('div')`
+    cursor: auto;
     width: 100%;
     display: flex;
     align-items: center;
@@ -132,6 +148,7 @@ const InputContainer = styled('div')`
 `
 
 const SubmitButton = styled(Button)`
+    height: 60px;
     padding: 8px;
     width: 100%;
     margin: 15px;
