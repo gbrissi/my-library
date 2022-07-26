@@ -1,0 +1,9 @@
+{
+  "name": "my-project",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "postinstall": "yarn --cwd server --production=false install",
+    "build": "yarn --cwd server start"
+  }
+}
