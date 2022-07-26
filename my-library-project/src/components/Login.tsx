@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import {useNavigate} from 'react-router-dom'
 import axios from 'axios';
 
 import {styled} from '@mui/material/styles'
@@ -11,6 +12,8 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 var visibility = false
 function Login() {
+
+  let navigate = useNavigate()
 
   const [isVisible, setIsVisible] = useState(false);
     var handleClickShowPassword = function(arg: boolean) {
@@ -26,8 +29,9 @@ function Login() {
         const username = document.getElementById('user') as HTMLFormElement
         const password = document.getElementById('password') as HTMLFormElement
         const usernamePassword = {'username': username.value, 'password': password.value} 
-        console.log(usernamePassword)
-        axios.post('https://library-online-webproject.herokuapp.com/users/login', usernamePassword)
+        
+        const response = axios.post('https://library-online-webproject.herokuapp.com/users/login', usernamePassword)
+        console.log(response)
     }
 
   return (

@@ -36,16 +36,16 @@ async function main() {
    })
 
     app.post('/users/login', async (req, res) => {
-        const person = users.find(person => person.username = req.body.username)
-        if (person == null) {
+        const user = users.find(user => user.username = req.body.username)
+        if (user == null) {
             return res.status(400).send('Cannot find person')
         } try {
             if(await bcrypt.compare(req.body.password, person.password)) {
-                console.log('Success')
+                app.get()
                 res.send('Success')
             } else {
-                console.log('Not Allowed')
-                res.send('Not Allowed')
+                const serverResponse = 'Not Allowed'
+                res.send(serverResponse)
             }
         } catch {
             res.status(500).send()
