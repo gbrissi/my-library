@@ -1,15 +1,18 @@
 import React from 'react';
 import { useState } from 'react';
+import axios from 'axios';
 
 import {styled} from '@mui/material/styles'
 
-import {Button, TextField, InputLabel, OutlinedInput, InputAdornment} from '@mui/material'
+import {Button, InputLabel, OutlinedInput, InputAdornment, Input} from '@mui/material'
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 var visibility = false
 function Login() {
+
+  const [isUpdated, setIsUpdated] = useState(false);
 
   const [isVisible, setIsVisible] = useState(false);
     var handleClickShowPassword = function(arg: boolean) {
@@ -21,6 +24,13 @@ function Login() {
         return visibility;
     }
 
+    function postData() {
+        const username = document.getElementById('user') as HTMLFormElement
+        const password = document.getElementById('password') as HTMLFormElement
+        const usernamePassword = {'username': username.value, 'password': password.value} 
+        console.log(usernamePassword)
+    }
+
   return (
     <Form>
         <Legend>
@@ -29,11 +39,11 @@ function Login() {
         <FormContainer>
             <InputContainer>
                 <InputLabel>Usuário</InputLabel>
-                <CustomOutlinedInput/>
+                <CustomOutlinedInput id='user'/>
             </InputContainer>
             <InputContainer>
                 <InputLabel>Senha</InputLabel>
-                <CustomOutlinedInput type={visibility ? 'text' : 'password'} endAdornment={
+                <CustomOutlinedInput id='password' type={visibility ? 'text' : 'password'} endAdornment={
                     <InputAdornment position='end'>
                         <IconButton edge='end' onClick={() => {
                             setIsVisible(handleClickShowPassword(visibility))
@@ -48,7 +58,7 @@ function Login() {
                     </InputAdornment>
                 }/>
             </InputContainer>
-            <SubmitButton variant="contained">Entrar</SubmitButton>
+            <SubmitButton onClick={() => {postData()}} variant="contained">Entrar</SubmitButton>
             <ForgotPassword>Esqueceu a senha?</ForgotPassword>
         </FormContainer>
     </Form>
@@ -73,7 +83,7 @@ const ForgotPassword = styled('a')`
     }
 
 `
-const Form = styled('div')`
+const Form = styled('form')`
     position: absolute;
     z-index: 999;
     background-color: whitesmoke;
@@ -113,11 +123,6 @@ const InputContainer = styled('div')`
     flex-direction: column;
     width: 100%;
     margin-bottom: 15px;
-`
-
-const Input = styled(TextField)`
-    margin-bottom: 15px;
-    flex: 1;
 `
 
 const SubmitButton = styled(Button)`
