@@ -36,7 +36,7 @@ async function main() {
    })
 
     app.post('/users/login', async (req, res) => {
-        const user = users.find(user => users.username = req.body.username)
+        const user = users.find(users => users.username = req.body.username)
         console.log(user)
         if (user == null) {
             return res.status(200).send('Cannot find person')
