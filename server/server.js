@@ -1,4 +1,10 @@
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
+const cors=require("cors");
+const corsOptions ={
+   origin:'*', 
+   credentials:true,            //access-control-allow-credentials:true
+   optionSuccessStatus:200,
+}
 const express = require('express')
 const app = express()
 const bcrypt = require('bcrypt')
@@ -6,6 +12,8 @@ const User = require('./models/User')
 const db = require('./util/_database')
 
 app.use(express.json())
+app.use(cors(corsOptions)) // Use this after the variable declaration
+
 const port = process.env.PORT || 3001;
 
 async function main() {
