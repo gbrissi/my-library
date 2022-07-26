@@ -42,6 +42,7 @@ async function main() {
                 user = true
             }
         }
+        console.log(user)
         if (user == false) {
             return res.status(200).send('Cannot find person')
         } try {
