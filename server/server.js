@@ -43,15 +43,18 @@ async function main() {
             }
         }
         if (user == true) {
-            return res.status(200).send('Cannot find person')
-        } try {
-            if(await bcrypt.compare(req.body.password, user.password)) {
-                res.status(200).send('Success')
-            } else {
-                res.status(200).send('Not Allowed')
+            try {
+                if(await bcrypt.compare(req.body.password, user.password)) {
+                    res.status(200).send('Success')
+                } else {
+                    res.status(200).send('Not Allowed')
+                }
+            } catch {
+                res.status(500).send()
             }
-        } catch {
-            res.status(500).send()
+        } else {
+            return res.status(200).send('Cannot find person')
+
         }
     })
 

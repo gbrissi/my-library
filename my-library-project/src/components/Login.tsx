@@ -48,12 +48,15 @@ function Login() {
             <h1 id='title'>LOGIN</h1>
         </Legend>
         <FormContainer>
-            {
+            <InputContainer>
+                <InputErrorCode>
+                <InputLabel sx={{alignSelf: 'end'}}>Usuário</InputLabel>
+                {
                 !isValid &&
                 <ErrorCode>Usuário e/ou senha incorretos</ErrorCode>
-            }
-            <InputContainer>
-                <InputLabel>Usuário</InputLabel>
+                }
+                </InputErrorCode>
+
                 <CustomOutlinedInput id='user'/>
             </InputContainer>
             <InputContainer>
@@ -80,11 +83,17 @@ function Login() {
   )
 }
 
+const InputErrorCode = styled('div')`
+    display: flex;
+    justify-content: space-between;
+`
+
 const ErrorCode = styled('p')`
+    margin: 0;
+    justify-self: end;
     font-family: 'Roboto' sans-serif;
     font-size: 1.1rem;
     color: red;
-    text-decoration: underline;
 `
 
 const CustomOutlinedInput = styled(OutlinedInput)`
