@@ -5,6 +5,7 @@ const User = require('./models/User')
 const db = require('./util/_database')
 
 app.use(express.json())
+const port = process.env.PORT || 3001;
 
 async function main() {
 
@@ -46,4 +47,6 @@ main()
         return db.destroy();
         });
 
-app.listen(3001)
+app.listen(port, () => {
+    console.log('the server is running in port', port)
+})
