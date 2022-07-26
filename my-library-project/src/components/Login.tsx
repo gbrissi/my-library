@@ -26,13 +26,12 @@ function Login() {
         }
         return visibility;
     }
-
-    function postData(): boolean {
+    
+    async function postData(): Promise<boolean> {
 
         const username = document.getElementById('user') as HTMLFormElement
         const password = document.getElementById('password') as HTMLFormElement
         const usernamePassword = JSON.stringify({'username': username.value, 'password': password.value}) 
-        console.log(usernamePassword)
         const options = {
             url: 'https://library-online-webproject.herokuapp.com/users/login',
             method: 'POST',
@@ -45,14 +44,21 @@ function Login() {
             data: usernamePassword
           };
 
-        axios(options).then(res => {
-            console.log(res)
+        await axios(options).then(res => {
             if(res.data == 'Success') {
                 console.log('Connected with success')
                 navigate('/potato')
-            } 
+            } else {
+                username.value = ''
+                password.value = ''
+            }
         })
-        return false
+
+        if (username.value == '') {
+            return false
+        } else {
+            return true
+        }
     }
 
   return (
@@ -89,7 +95,7 @@ function Login() {
                     </InputAdornment>
                 }/>
             </InputContainer>
-            <SubmitButton onClick={() => {postData(), setIsValid(postData())}} variant="contained">Entrar</SubmitButton>
+            <SubmitButton onClick={async () => {postData(), setIsValid(await postData())}} variant="contained">Entrar</SubmitButton>
             <ForgotPassword>Esqueceu a senha?</ForgotPassword>
         </FormContainer>
     </Form>
