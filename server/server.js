@@ -46,13 +46,20 @@ async function main() {
             }
         }
         if (user) {
-            if (await bcrypt.compare(req.body.password, user.password), 10) {
+            try {
+                await bcrypt.compare(req.body.password, user.password), 10;
+                console.log(result)
+            } catch (error) {
+                console.log(error)
+            }            
+            
+            /*if () {
                 console.log('Success')
                 res.status(200).send('Success')
             } else {
                 console.log('Not Allowed')
                 res.status(200).send('Not Allowed')
-            } 
+            } */
         } else {
             res.status(200).send('Cannot find person')
         }
