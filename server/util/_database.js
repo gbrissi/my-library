@@ -2,9 +2,6 @@ const { Model } = require('objection')
 
 const knex = require('knex')({
     client: 'pg',
-    ssl: {
-      rejectUnauthorized: false
-    },
     connection: {
         host: 'ec2-52-72-99-110.compute-1.amazonaws.com',
         port: 5432,
