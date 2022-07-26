@@ -1,11 +1,20 @@
 {
-  "name": "my-library",
+  "name": "server",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/gbrissi/my-library.git",
-  "author": "Gabriel Rissi <gbrissi123@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node ./server/server.js"
+    "start": "node ./server/server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "express": "^4.18.1",
+    "knex": "^2.2.0",
+    "objection": "^3.0.1",
+    "pg": "^8.7.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }
