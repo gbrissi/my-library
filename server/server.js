@@ -36,9 +36,13 @@ async function main() {
    })
 
     app.post('/users/login', async (req, res) => {
-        const user = users.find(users => users.username = req.body.username)
-        console.log(user)
-        if (user == null) {
+        let user = false
+        for(i=0; i<users.length ;i++) {
+            if(req.body.username == users[i].username){
+                user = true
+            }
+        }
+        if (user == false) {
             return res.status(200).send('Cannot find person')
         } try {
             if(await bcrypt.compare(req.body.password, user.password)) {
