@@ -38,7 +38,6 @@ async function main() {
    })
 
     app.post('/users/login', async (req, res) => {
-        let user = false
         try {
             for(i=0; i<users.length ;i++) {
                 if(req.body.username == users[i].username){
