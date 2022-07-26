@@ -4,6 +4,6 @@
   "private": true,
   "scripts": {
     "postinstall": "yarn --cwd server --production=false install",
-    "build": "yarn --cwd server config set strict-ssl=false start"
+    "build": "yarn --cwd server start"
   }
 }
