@@ -46,15 +46,7 @@ async function main() {
         }
         if (user) {
             try {
-                bcrypt.compare(req.body.password, user.password, function(error, response) {
-                    if(error) {
-                        res.send('error')
-                    } if(response) {
-                        res.send('success')
-                    } else {
-                        res.send('password does not match')
-                    }
-                })
+                res.send('bcrypt is the problem')
             } catch (error) {
                 res.send('some shit error fvck')
             }            
