@@ -43,8 +43,7 @@ async function main() {
             if(await bcrypt.compare(req.body.password, person.password)) {
                 res.status(200).send('Success')
             } else {
-                const serverResponse = 'Not Allowed'
-                res.send(serverResponse)
+                res.status(400).send('Not Allowed')
             }
         } catch {
             res.status(500).send()
