@@ -46,19 +46,15 @@ async function main() {
         }
         if (user) {
             try {
-                bcrypt.compare(req.body.password, user.password, function(err, response) {
-                    if (err){
-                      // handle error
-                      return res.send(200).send('Error')
-                    }
-                    if (response) {
-                      // Send JWT
-                      return res.status(200).send('Success');
+                bcrypt.compare(req.body.password, user.password, function(error, response) {
+                    if(error) {
+                        res.send('error')
+                    } if(response) {
+                        res.send('success')
                     } else {
-                      // response is OutgoingMessage object that server response http request
-                      return res.json({success: false, message: 'passwords do not match'});
+                        res.send('password does not match')
                     }
-                  });
+                })
             } catch (error) {
                 res.send('some shit error fvck')
             }            
