@@ -38,12 +38,12 @@ async function main() {
     app.post('/users/login', async (req, res) => {
         const user = users.find(user => user.username = req.body.username)
         if (user == null) {
-            return res.status(400).send('Cannot find person')
+            return res.status(500).send('Cannot find person')
         } try {
             if(await bcrypt.compare(req.body.password, user.password)) {
                 res.status(200).send('Success')
             } else {
-                res.status(400).send('Not Allowed')
+                res.status(500).send('Not Allowed')
             }
         } catch {
             res.status(500).send()
