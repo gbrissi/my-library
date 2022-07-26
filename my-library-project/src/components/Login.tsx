@@ -31,8 +31,8 @@ function Login() {
 
         const username = document.getElementById('user') as HTMLFormElement
         const password = document.getElementById('password') as HTMLFormElement
-        const usernamePassword = {'username': username.value, 'password': password.value} 
-        
+        const usernamePassword = JSON.stringify({'username': username.value, 'password': password.value}) 
+        console.log(usernamePassword)
         const options = {
             url: 'https://library-online-webproject.herokuapp.com/users/login',
             method: 'POST',

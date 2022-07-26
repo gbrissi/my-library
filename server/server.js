@@ -48,8 +48,10 @@ async function main() {
         }
         if (user == true) {
             if (await bcrypt.compare(req.body.password, user.password)) {
+                console.log('Success')
                 return res.status(200).send('Success')
             } else {
+                console.log('Not Allowed')
                 return res.status(200).send('Not Allowed')
             } 
         } else {
