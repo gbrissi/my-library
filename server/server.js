@@ -40,7 +40,7 @@ async function main() {
         if (user == null) {
             return res.status(400).send('Cannot find person')
         } try {
-            if(await bcrypt.compare(req.body.password, person.password)) {
+            if(await bcrypt.compare(req.body.password, user.password)) {
                 res.status(200).send('Success')
             } else {
                 res.status(400).send('Not Allowed')
