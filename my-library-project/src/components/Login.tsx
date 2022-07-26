@@ -28,11 +28,24 @@ function Login() {
     }
 
     function postData(): boolean {
+
         const username = document.getElementById('user') as HTMLFormElement
         const password = document.getElementById('password') as HTMLFormElement
         const usernamePassword = {'username': username.value, 'password': password.value} 
         
-        axios.post('https://library-online-webproject.herokuapp.com/users/login', usernamePassword).then(res => {
+        const options = {
+            url: 'https://library-online-webproject.herokuapp.com/users/login',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+                "Access-Control-Allow-Origin": "*",
+                'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers': '*'
+            },
+            data: usernamePassword
+          };
+
+        axios(options).then(res => {
             console.log(res)
             if(res.data == 'Success') {
                 console.log('Connected with success')
