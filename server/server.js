@@ -38,7 +38,6 @@ async function main() {
    })
 
     app.post('/users/login', async (req, res) => {
-        console.log(req)
         let user = false
         for(i=0; i<users.length ;i++) {
             if(req.body.username == users[i].username){
@@ -47,10 +46,13 @@ async function main() {
         }
         if (user) {
             try {
+                /*
                 await bcrypt.compare(req.body.password, user.password), 10;
                 console.log(result)
+                */
+               res.send('Okay, it is working by now')
             } catch (error) {
-                console.log(error)
+                res.send('some shit error fvck')
             }            
             
             /*if () {
