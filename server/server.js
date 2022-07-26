@@ -12,11 +12,11 @@ const cors = require('cors');
 const corsOption = {
     origin: ['http://localhost:3000'],
 };
-app.use(cors(corsOption));
 //if you want in every domain then
+app.use(express.json())
+app.use(cors(corsOption));
 app.use(cors())
 
-app.use(express.json())
 
 const port = process.env.PORT || 3001;
 
@@ -46,7 +46,7 @@ async function main() {
                 user = true
             }
         }
-        if (user == true) {
+        if (user) {
             if (await bcrypt.compare(req.body.password, user.password)) {
                 console.log('Success')
                 return res.status(200).send('Success')
