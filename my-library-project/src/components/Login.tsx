@@ -30,8 +30,9 @@ function Login() {
         const password = document.getElementById('password') as HTMLFormElement
         const usernamePassword = {'username': username.value, 'password': password.value} 
         
-        const response = axios.post('https://library-online-webproject.herokuapp.com/users/login', usernamePassword)
-        console.log(response)
+        console.log(usernamePassword)
+        axios.post('https://library-online-webproject.herokuapp.com/users/login', usernamePassword)
+        
     }
 
   return (
