@@ -10,14 +10,17 @@ import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
+var setDisable = false
 var visibility = false
 function Login() {
 
   let navigate = useNavigate()
 
+  const [isError, setIsError] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
   const [isValid, setIsValid] = useState(true);
-
   const [isVisible, setIsVisible] = useState(false);
+
     var handleClickShowPassword = function(arg: boolean) {
         if(arg === false) {
         visibility = true;
@@ -27,6 +30,16 @@ function Login() {
         return visibility;
     }
     
+    function handleClickLoad() {
+        if(setDisable) {
+            setDisable = false
+        } else {
+            setDisable = true
+        }
+        console.log(setDisable)
+        return setDisable
+    }
+
     async function postData(): Promise<boolean> {
 
         const username = document.getElementById('user') as HTMLFormElement
@@ -55,6 +68,7 @@ function Login() {
         })
 
         if (username.value == '') {
+            setIsDisabled(false)
             return false
         } else {
             return true
@@ -76,11 +90,11 @@ function Login() {
                 }
                 </InputErrorCode>
 
-                <CustomOutlinedInput id='user'/>
+                <CustomOutlinedInput required={true} error={isError} id='user'/>
             </InputContainer>
             <InputContainer>
                 <InputLabel>Senha</InputLabel>
-                <CustomOutlinedInput id='password' type={visibility ? 'text' : 'password'} endAdornment={
+                <CustomOutlinedInput required={true} error={isError} id='password' type={visibility ? 'text' : 'password'} endAdornment={
                     <InputAdornment position='end'>
                         <IconButton edge='end' onClick={() => {
                             setIsVisible(handleClickShowPassword(visibility))
@@ -95,7 +109,14 @@ function Login() {
                     </InputAdornment>
                 }/>
             </InputContainer>
-            <SubmitButton onClick={async () => {setIsValid(await postData())}} variant="contained">Entrar</SubmitButton>
+            {
+                !isDisabled &&
+                <SubmitButton disabled={false} onClick={async () => {setIsDisabled(handleClickLoad()), await setIsValid(await postData()), setIsDisabled(handleClickLoad()), setIsError(true)}} variant="contained">Entrar</SubmitButton>
+            }
+            {
+                isDisabled &&
+                <SubmitButton disabled={true} variant="contained">Entrar</SubmitButton>
+            }
             <ForgotPassword>Esqueceu a senha?</ForgotPassword>
         </FormContainer>
     </Form>
