@@ -14,8 +14,7 @@ var setDisable = false
 var visibility = false
 function Login() {
 
-    let navigate = useNavigate()
-
+    const navigate = useNavigate()
     const [isError, setIsError] = useState(false);
     const [isDisabled, setIsDisabled] = useState(false);
     const [isValid, setIsValid] = useState(true);
