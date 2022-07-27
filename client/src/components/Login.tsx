@@ -14,12 +14,12 @@ var setDisable = false
 var visibility = false
 function Login() {
 
-  let navigate = useNavigate()
+    let navigate = useNavigate()
 
-  const [isError, setIsError] = useState(false);
-  const [isDisabled, setIsDisabled] = useState(false);
-  const [isValid, setIsValid] = useState(true);
-  const [isVisible, setIsVisible] = useState(false);
+    const [isError, setIsError] = useState(false);
+    const [isDisabled, setIsDisabled] = useState(false);
+    const [isValid, setIsValid] = useState(true);
+    const [isVisible, setIsVisible] = useState(false);
 
     function handleClickShowPassword(arg: boolean)  {
         if(arg === false) {
@@ -167,6 +167,7 @@ const ForgotPassword = styled('a')`
 
 `
 const Form = styled('form')`
+    cursor: auto;
     position: absolute;
     z-index: 999;
     background-color: whitesmoke;
@@ -176,7 +177,6 @@ const Form = styled('form')`
 `
 
 const FormContainer = styled('div')`
-    cursor: auto;
     width: 100%;
     display: flex;
     align-items: center;
