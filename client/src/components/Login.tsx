@@ -68,7 +68,7 @@ function Login() {
         await axios(options).then(res => {
             if(res.data == 'Success') {
                 console.log('Connected with success')
-                navigate('/potato')
+                navigate('/profile')
             } else {
                 username.value = ''
                 password.value = ''

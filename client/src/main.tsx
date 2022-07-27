@@ -13,9 +13,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<App/>}/>
-        <Route path='/potato' element={<h1>potato</h1>}/>
-        <Route path='/beans' element={<h1>beans</h1>}/>
-        <Route path='/lettuce' element={<h1>lettuce</h1>}/>
+        <Route path='/about-us' element={<h1>About Us</h1>}/>
+        <Route path='/dashboard' element={<h1>Admin Dashboard</h1>}/>
+        <Route path='/profile' element={<h1>My Profile</h1>}/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

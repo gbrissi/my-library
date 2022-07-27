@@ -7,6 +7,9 @@ import {AppBar, Button, SwipeableDrawer, Container, Select} from '@mui/material'
 import Login from './Login';
 import mySiteLogo from '../assets/images/site-logo-header.png'
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import PersonIcon from '@mui/icons-material/Person';
+import InfoIcon from '@mui/icons-material/Info';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 //initial variables
 var isItSelected = false;
@@ -52,14 +55,15 @@ const Header = () => {
             { isSelected &&
             <div>
               <HamburguerIcon
-                icontransform={'translateX(-50px)'}
+                icontransform={'translateX(-60px)'}
                 iconbackground={'transparent'}
                 iconboxshadow={'none'}
                 iconbeforetransform={'rotate(45deg) translate(35px, -35px)'}
                 iconaftertransform={'rotate(-45deg) translate(35px, 35px)'}
               >
               </HamburguerIcon>   
-              <SwipeableDrawer 
+              <SwipeableDrawer
+                sx={{overflow: 'hidden'}} 
                 anchor='right'
                 open={true}
                 onClose={() => {
@@ -70,10 +74,9 @@ const Header = () => {
                 }}
               >
                 <DrawerContainer>
-                  <DrawerHeading>Menu</DrawerHeading>
-                  <DrawerItem to='/potato'>Potato</DrawerItem>
-                  <DrawerItem to='/beans'>Beans</DrawerItem>
-                  <DrawerItem to='/lettuce'>Lettuce</DrawerItem>
+                  <DrawerItem><CustomLink to='/about-us'><InfoIcon sx={{width:'40px', height:'40px'}}/></CustomLink></DrawerItem>
+                  <DrawerItem><CustomLink to='/dashboard'><AdminPanelSettingsIcon sx={{width:'40px', height:'40px'}}/></CustomLink></DrawerItem>
+                  <DrawerItem><CustomLink to='/profile'><PersonIcon sx={{width:'40px', height:'40px'}}/></CustomLink></DrawerItem>
                 </DrawerContainer>
               </SwipeableDrawer>
             </div>
@@ -141,37 +144,31 @@ const SignIn = styled(Button)`
       background-color: #262626;
     }
 `
-const DrawerContainer = styled(Container)`
+const DrawerContainer = styled('div')`
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
-  background-color: #434343;
-  padding: 25px;
-  width: 250px;
+  background-color: #00423d;
+  width: 100px;
   height: 100%;
 `
 
-const DrawerItem = styled(Link)`
+const DrawerItem = styled('div')`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+`
+
+const CustomLink = styled(Link)`
   text-decoration: none;
   cursor: pointer;
-  font-size: 1.2rem;
   color: white;
   font-family: 'Roboto', sans-serif;
   text-align: center;
   padding: 15px;
-  border-bottom: 1px solid #585858;
   width: 100%;
-`
-
-const DrawerHeading = styled('h2')`
-  font-size: 1.3rem;
-  font-weight: bolder;
-  width: 100%;
-  color: white;
-  font-family: 'Roboto', sans-serif;
-  padding: 25px;
-  text-align: center;
-  border-bottom: 1px solid #585858;
 `
 
 const IconContainer = styled('div')`
