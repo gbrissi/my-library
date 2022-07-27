@@ -95,7 +95,7 @@ function Login() {
                     </InputAdornment>
                 }/>
             </InputContainer>
-            <SubmitButton onClick={async () => {postData(), setIsValid(await postData())}} variant="contained">Entrar</SubmitButton>
+            <SubmitButton onClick={async () => {setIsValid(await postData())}} variant="contained">Entrar</SubmitButton>
             <ForgotPassword>Esqueceu a senha?</ForgotPassword>
         </FormContainer>
     </Form>
