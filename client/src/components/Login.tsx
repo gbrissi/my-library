@@ -21,7 +21,7 @@ function Login() {
   const [isValid, setIsValid] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
 
-    var handleClickShowPassword = function(arg: boolean) {
+    function handleClickShowPassword(arg: boolean)  {
         if(arg === false) {
         visibility = true;
         } else {
@@ -38,6 +38,15 @@ function Login() {
         }
         console.log(setDisable)
         return setDisable
+    }
+
+    function keyDown(e: any) {
+        if (e.keyCode === 13) {
+            console.log('enter')
+            return true
+        } else {
+            return false
+        }
     }
 
     async function postData(): Promise<boolean> {
@@ -111,7 +120,11 @@ function Login() {
             </InputContainer>
             {
                 !isDisabled &&
-                <SubmitButton disabled={false} onClick={async () => {setIsDisabled(handleClickLoad()), await setIsValid(await postData()), setIsDisabled(handleClickLoad()), setIsError(true)}} variant="contained">Entrar</SubmitButton>
+                <SubmitButton disabled={false} type='submit' onKeyDown={(e) => {
+                    if(keyDown(e)) {
+                      async () => {setIsDisabled(handleClickLoad()), await setIsValid(await postData()), setIsDisabled(handleClickLoad()), setIsError(true)}
+                    }
+                }} onClick={async () => {setIsDisabled(handleClickLoad()), await setIsValid(await postData()), setIsDisabled(handleClickLoad()), setIsError(true)}} variant="contained">Entrar</SubmitButton>
             }
             {
                 isDisabled &&
