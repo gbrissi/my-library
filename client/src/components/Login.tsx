@@ -86,22 +86,22 @@ function Login() {
   return (
     <Form>
         <Legend>
-            <h1 id='title'>LOGIN</h1>
+            <h1 id='title'>LOG IN</h1>
         </Legend>
         <FormContainer>
             <InputContainer>
                 <InputErrorCode>
-                <InputLabel sx={{alignSelf: 'end'}}>Usuário</InputLabel>
+                <InputLabel sx={{alignSelf: 'end'}}>User</InputLabel>
                 {
                 !isValid &&
-                <ErrorCode>Usuário e/ou senha incorretos</ErrorCode>
+                <ErrorCode>User and/or password incorrect(s)</ErrorCode>
                 }
                 </InputErrorCode>
 
                 <CustomOutlinedInput required={true} error={isError} id='user'/>
             </InputContainer>
             <InputContainer>
-                <InputLabel>Senha</InputLabel>
+                <InputLabel>Password</InputLabel>
                 <CustomOutlinedInput required={true} error={isError} id='password' type={visibility ? 'text' : 'password'} endAdornment={
                     <InputAdornment position='end'>
                         <IconButton edge='end' onClick={() => {
@@ -123,13 +123,13 @@ function Login() {
                     if(keyDown(e)) {
                       async () => {setIsDisabled(handleClickLoad()), await setIsValid(await postData()), setIsDisabled(handleClickLoad()), setIsError(true)}
                     }
-                }} onClick={async () => {setIsDisabled(handleClickLoad()), await setIsValid(await postData()), setIsDisabled(handleClickLoad()), setIsError(true)}} variant="contained">Entrar</SubmitButton>
+                }} onClick={async () => {setIsDisabled(handleClickLoad()), await setIsValid(await postData()), setIsDisabled(handleClickLoad()), setIsError(true)}} variant="contained">ENTER</SubmitButton>
             }
             {
                 isDisabled &&
-                <SubmitButton disabled={true} variant="contained">Entrar</SubmitButton>
+                <SubmitButton disabled={true} variant="contained">ENTER</SubmitButton>
             }
-            <ForgotPassword>Esqueceu a senha?</ForgotPassword>
+            <ForgotPassword>Forgot the password?</ForgotPassword>
         </FormContainer>
     </Form>
   )
