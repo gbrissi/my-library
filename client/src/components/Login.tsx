@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import {styled} from '@mui/material/styles'
 
-import {Button, InputLabel, OutlinedInput, InputAdornment, Input} from '@mui/material'
+import {Button, InputLabel, OutlinedInput, InputAdornment, Fade} from '@mui/material'
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
@@ -84,54 +84,56 @@ function Login() {
     }
 
   return (
-    <Form>
-        <Legend>
-            <h1 id='title'>LOG IN</h1>
-        </Legend>
-        <FormContainer>
-            <InputContainer>
-                <InputErrorCode>
-                <InputLabel sx={{alignSelf: 'end'}}>User</InputLabel>
-                {
-                !isValid &&
-                <ErrorCode>User and/or password incorrect(s)</ErrorCode>
-                }
-                </InputErrorCode>
-
-                <CustomOutlinedInput required={true} error={isError} id='user'/>
-            </InputContainer>
-            <InputContainer>
-                <InputLabel>Password</InputLabel>
-                <CustomOutlinedInput required={true} error={isError} id='password' type={visibility ? 'text' : 'password'} endAdornment={
-                    <InputAdornment position='end'>
-                        <IconButton edge='end' onClick={() => {
-                            setIsVisible(handleClickShowPassword(visibility))
-                        }}>
-                            { isVisible &&
-                                <Visibility/>
-                            }
-                            { !isVisible &&
-                                <VisibilityOff/>
-                            }
-                        </IconButton>
-                    </InputAdornment>
-                }/>
-            </InputContainer>
-            {
-                !isDisabled &&
-                <SubmitButton disabled={false} type='submit' onKeyDown={(e) => {
-                    if(keyDown(e)) {
-                      async () => {setIsDisabled(handleClickLoad()), await setIsValid(await postData()), setIsDisabled(handleClickLoad()), setIsError(true)}
+    <Fade in>
+        <Form>
+            <Legend>
+                <h1 id='title'>LOG IN</h1>
+            </Legend>
+            <FormContainer>
+                <InputContainer>
+                    <InputErrorCode>
+                    <InputLabel sx={{alignSelf: 'end'}}>User</InputLabel>
+                    {
+                    !isValid &&
+                    <ErrorCode>User and/or password incorrect(s)</ErrorCode>
                     }
-                }} onClick={async () => {setIsDisabled(handleClickLoad()), await setIsValid(await postData()), setIsDisabled(handleClickLoad()), setIsError(true)}} variant="contained">ENTER</SubmitButton>
-            }
-            {
-                isDisabled &&
-                <SubmitButton disabled={true} variant="contained">ENTER</SubmitButton>
-            }
-            <ForgotPassword>Forgot the password?</ForgotPassword>
-        </FormContainer>
-    </Form>
+                    </InputErrorCode>
+
+                    <CustomOutlinedInput required={true} error={isError} id='user'/>
+                </InputContainer>
+                <InputContainer>
+                    <InputLabel>Password</InputLabel>
+                    <CustomOutlinedInput required={true} error={isError} id='password' type={visibility ? 'text' : 'password'} endAdornment={
+                        <InputAdornment position='end'>
+                            <IconButton edge='end' onClick={() => {
+                                setIsVisible(handleClickShowPassword(visibility))
+                            }}>
+                                { isVisible &&
+                                    <Visibility/>
+                                }
+                                { !isVisible &&
+                                    <VisibilityOff/>
+                                }
+                            </IconButton>
+                        </InputAdornment>
+                    }/>
+                </InputContainer>
+                {
+                    !isDisabled &&
+                    <SubmitButton disabled={false} type='submit' onKeyDown={(e) => {
+                        if(keyDown(e)) {
+                        async () => {setIsDisabled(handleClickLoad()), await setIsValid(await postData()), setIsDisabled(handleClickLoad()), setIsError(true)}
+                        }
+                    }} onClick={async () => {setIsDisabled(handleClickLoad()), await setIsValid(await postData()), setIsDisabled(handleClickLoad()), setIsError(true)}} variant="contained">ENTER</SubmitButton>
+                }
+                {
+                    isDisabled &&
+                    <SubmitButton disabled={true} variant="contained">ENTER</SubmitButton>
+                }
+                <ForgotPassword>Forgot the password?</ForgotPassword>
+            </FormContainer>
+        </Form>
+    </Fade>
   )
 }
 
