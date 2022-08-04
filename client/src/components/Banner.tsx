@@ -10,7 +10,7 @@ function Banner() {
   return (
     <BannerContainer>
         <SiteLogo data={mySiteLogo} type="image/svg+xml"/>
-        <Typography variant='h2' sx={{marginTop: '1rem'}}>My Portfolio</Typography>
+        <Typography variant='h2' sx={{marginTop: '1rem'}}>My Library</Typography>
     </BannerContainer>
   )
 }
