@@ -26,7 +26,7 @@ const BannerContainer = styled('div')`
 `
 
 const SiteLogo = styled('object')`
-  width: 200px;
+  width: 250px;
   filter: invert(29%) sepia(38%) saturate(1473%) hue-rotate(134deg) brightness(94%) contrast(103%);
 `
 
