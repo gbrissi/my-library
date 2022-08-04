@@ -4,7 +4,7 @@ import bookImg from '../assets/images/catching-fire.jpg'
 
 import {styled} from '@mui/material/styles';
 
-import { Card, Container } from '@mui/material';
+import { Card, Grid } from '@mui/material';
 
 function Book() {
   return (
@@ -12,27 +12,16 @@ function Book() {
         <BookImg src={bookImg} alt='Book Image'/>
         <Title>Book Title</Title>
         <Subtitle>Book Subtitle</Subtitle>
-    </BookCard>
+    </BookCard>  
   )
 }
 
 export default Book
 
 const BookCard = styled(Card)`
-    width: 205px;
-    height: 350px;
     margin: 10px;
+    height: 350px;
     background-color: #fcfafa;
-    
-    @media(max-width: 700px) {
-        width: 175px;
-        height: 270px;
-    }
-
-    @media(max-width: 460px) {
-        width: 125px;
-        height: 175px;
-    }
 `
 
 const BookImg = styled('img')`
@@ -56,6 +45,5 @@ const Title = styled('p')`
     font-family: sans-serif;
     font-weight: bolder;
     font-size: 1.2rem;
-    font-weight: 400;
     padding: 2px;
 `

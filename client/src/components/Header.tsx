@@ -5,7 +5,7 @@ import {makeStyles, styled} from '@mui/material/styles';
 import {AppBar, Button, SwipeableDrawer, Container, Select} from '@mui/material'
 
 import Login from './Login';
-import mySiteLogo from '../assets/images/site-logo-header.png'
+import mySiteLogo from '../assets/images/logo.svg'
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import PersonIcon from '@mui/icons-material/Person';
 import InfoIcon from '@mui/icons-material/Info';
@@ -36,8 +36,8 @@ const Header = () => {
     <HeaderContainer>
       <Content>
         <LogoContainer>
-          <SiteLogo src={mySiteLogo}/>
-          <SiteName>MY LIBRARY</SiteName>
+          <SiteLogo data={mySiteLogo} type="image/svg+xml"/>
+          <SiteName>My Library</SiteName>
         </LogoContainer>
         <UtilsContainer>
           <SignIn onClick={() => setActive(true)} variant="contained">Sign In</SignIn>
@@ -255,7 +255,8 @@ const LogoContainer = styled('div')`
   color: white;
 `
 
-const SiteLogo = styled('img')`
+const SiteLogo = styled('object')`
+  filter: brightness(0) invert(1);
   width: 40px;
   height: 30px;
   margin-right: 0.6rem;

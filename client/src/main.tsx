@@ -7,22 +7,23 @@ import {
   Routes,
   Route,
 } from 'react-router-dom'
+/*
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 
 const theme = createTheme({
   palette: {
+    mode: 'light',
     primary: {
-      main: '#fafafa'
+      light: '#f5f5f5',
+      main: '#fff',
+      dark: '#424242'
     },
-    secondary: {
-      main: '#26a69a'
-    }
   }
 })
-
+*/
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
+    {/*<ThemeProvider theme={theme}>*/}
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<App/>}/>
@@ -31,6 +32,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path='/profile' element={<h1>My Profile</h1>}/>
         </Routes>
       </BrowserRouter>
-    </ThemeProvider>
+    {/*</ThemeProvider>*/}
   </React.StrictMode>
 )

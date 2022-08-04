@@ -4,38 +4,32 @@ import Book from './Book';
 
 import {styled} from '@mui/material/styles';
 
-import { Container } from '@mui/material';
+import { Grid } from '@mui/material';
 
 function Library() {
   return (
-    <BooksContainer disableGutters>
+    <Grid container sx={{
+      padding: '10px',
+      ['@media (max-width: 600px)']: {
+        width: '80vw',
+        alignSelf: 'center',
+        marginTop: '15px'
+      }
+      }}>
+      <Grid item xs={12} sm={6} md={4} lg={3}>
         <Book/>
+      </Grid>
+      <Grid item xs={12} sm={6} md={4} lg={3}>
         <Book/>
-        <Book/>     
+      </Grid>      
+      <Grid item xs={12} sm={6} md={4} lg={3}>
         <Book/>
+      </Grid>
+      <Grid item xs={12} sm={6} md={4} lg={3}>
         <Book/>
-        <Book/>
-        <Book/>
-        <Book/>
-        <Book/>
-        <Book/>
-        <Book/>
-        <Book/>
-        <Book/>
-        <Book/>
-        <Book/>
-        <Book/>
-    </BooksContainer>
+      </Grid>
+    </Grid>
   )
 }
 
 export default Library
-
-const BooksContainer = styled(Container)`
-    margin-top: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-`
