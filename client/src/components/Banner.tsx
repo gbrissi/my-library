@@ -10,7 +10,8 @@ function Banner() {
   return (
     <BannerContainer>
         <SiteLogo data={mySiteLogo} type="image/svg+xml"/>
-        <Typography variant='h2' sx={{marginTop: '1rem'}}>My Library</Typography>
+        <Typography variant='h2' sx={{marginTop: '1rem', color: '#00655d'}}>My Library</Typography>
+        <Typography variant='body1' sx={{letterSpacing: '10px', textTransform:'uppercase', color: '#00655d'}}>Public Library</Typography>
     </BannerContainer>
   )
 }
@@ -25,7 +26,7 @@ const BannerContainer = styled('div')`
 `
 
 const SiteLogo = styled('object')`
-    color: teal;
+  filter: invert(29%) sepia(38%) saturate(1473%) hue-rotate(134deg) brightness(94%) contrast(103%);
 `
 
 export default Banner
