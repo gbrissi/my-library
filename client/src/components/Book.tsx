@@ -1,49 +1,88 @@
 import React from 'react'
 
-import bookImg from '../assets/images/catching-fire.jpg'
-
 import {styled} from '@mui/material/styles';
 
-import { Card, Grid } from '@mui/material';
+import { Card, Grid, Typography, Chip } from '@mui/material';
 
-function Book() {
+function Book(props: any) {
   return (
     <BookCard>
-        <BookImg src={bookImg} alt='Book Image'/>
-        <Title>Book Title</Title>
-        <Subtitle>Book Subtitle</Subtitle>
+        <BookImgContainer>
+            <BookImg src={props.image} alt='Book Image'/>
+        </BookImgContainer>
+        <BookInformation>
+            <Title variant='body1'>{props.title}</Title>
+            <Subtitle variant='body2'>{props.subtitle}</Subtitle>
+            <Author variant='body2'>{props.author}</Author>
+        </BookInformation>
+        <Genres>
+            <Genre label={props.genre}/>
+        </Genres>
     </BookCard>  
   )
 }
 
 export default Book
 
+const Genres = styled('div')`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
+const Genre = styled(Chip)`
+    background-color: red;
+    color: white;
+    padding: 0 10px;
+    margin-bottom: 5px;
+`
+
 const BookCard = styled(Card)`
     margin: 10px;
     height: 350px;
     background-color: #fcfafa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+`
+
+const BookInformation = styled('div')`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+`
+
+const BookImgContainer = styled('div')`
+    width: 100%;
+    height: 240px;
+    display: flex;
+    justify-content: center;
 `
 
 const BookImg = styled('img')`
-    width: 100%;
-    height: 60%;
+    padding: 25px;
+    max-width: 100%;
+    max-height: 100%;
 `
 
-const Subtitle = styled('p')`
-    margin-top: -18px;
+const Subtitle = styled(Typography)`
+    margin-top: -5px;
     color: #3c3c3c;
-    font-family: sans-serif;
-    font-weight: bolder;
-    font-size: 1rem;
-    font-weight: 400;
-    padding: 2px;
+    text-align: center;
+    font-weight: 500;
 `
 
-const Title = styled('p')`
-    margin-top: -2px;
+const Title = styled(Typography)`
+    text-align: center;
     color: #3c3c3c;
-    font-family: sans-serif;
     font-weight: bolder;
-    font-size: 1.2rem;
-    padding: 2px;
+`
+
+const Author = styled(Typography)`
+    text-align: center;
+    margin-top: 5px;
+    color: #505050;
 `

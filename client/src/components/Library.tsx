@@ -1,9 +1,9 @@
 import React from 'react'
-
 import Book from './Book';
 
-import {styled} from '@mui/material/styles';
+import bookImg from '../assets/images/1984-book.jpg'
 
+import {styled} from '@mui/material/styles';
 import { Grid } from '@mui/material';
 
 function Library() {
@@ -39,16 +39,40 @@ function Library() {
 
       }}>
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <Book/>
+        <Book 
+          image={bookImg}
+          title='1984' 
+          subtitle='The War Among Us' 
+          author='George Orwell'
+          genre='Fantasy'
+         />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <Book/>
+         <Book 
+          image={bookImg}
+          title='1984' 
+          subtitle='The War Among Us' 
+          author='George Orwell'
+          genre='Fantasy'
+         />
       </Grid>      
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <Book/>
+         <Book 
+          image={bookImg}
+          title='1984' 
+          subtitle='The War Among Us' 
+          author='George Orwell'
+          genre='Fantasy'
+         />
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <Book/>
+         <Book 
+          image={bookImg}
+          title='1984' 
+          subtitle='The War Among Us' 
+          author='George Orwell'
+          genre='Fantasy'
+         />
       </Grid>
     </Grid>
   )
