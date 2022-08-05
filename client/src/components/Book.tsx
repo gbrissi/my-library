@@ -40,7 +40,7 @@ const Genre = styled(Chip)`
 const BookCard = styled(Card)`
     margin: 10px;
     height: 350px;
-    background-color: #fcfafa;
+    background-color: #fefffb;
     display: flex;
     justify-content: center;
     align-items: center;

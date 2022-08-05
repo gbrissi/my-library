@@ -33,7 +33,7 @@ const Header = () => {
   }
 
   return (
-    <HeaderContainer>
+    <HeaderContainer variant='outlined'>
       <Content>
         <LogoContainer>
           <SiteLogo data={mySiteLogo} type="image/svg+xml"/>
