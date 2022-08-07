@@ -46,7 +46,7 @@ async function main() {
                             if(error) {
                                 res.send('Error')
                             } if(response) {
-                                res.send('Success').then(res.redirect('/profile'))
+                                res.send('Success')
                             } else {
                                 res.send('Password does not match')
                             }
