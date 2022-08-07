@@ -21,6 +21,7 @@ function SearchField() {
 }
 
 const SearchContainer = styled(Container)`
+  margin-bottom: 2rem;
 `
 
 const BarLabel = styled(InputLabel)`

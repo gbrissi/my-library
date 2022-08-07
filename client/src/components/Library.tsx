@@ -74,6 +74,42 @@ function Library() {
           genre='Fantasy'
          />
       </Grid>
+      <Grid item xs={12} sm={6} md={4} lg={3}>
+         <Book 
+          image={bookImg}
+          title='1984' 
+          subtitle='The War Among Us' 
+          author='George Orwell'
+          genre='Fantasy'
+         />
+      </Grid>
+      <Grid item xs={12} sm={6} md={4} lg={3}>
+         <Book 
+          image={bookImg}
+          title='1984' 
+          subtitle='The War Among Us' 
+          author='George Orwell'
+          genre='Fantasy'
+         />
+      </Grid>
+      <Grid item xs={12} sm={6} md={4} lg={3}>
+         <Book 
+          image={bookImg}
+          title='1984' 
+          subtitle='The War Among Us' 
+          author='George Orwell'
+          genre='Fantasy'
+         />
+      </Grid>
+      <Grid item xs={12} sm={6} md={4} lg={3}>
+         <Book 
+          image={bookImg}
+          title='1984' 
+          subtitle='The War Among Us' 
+          author='George Orwell'
+          genre='Fantasy'
+         />
+      </Grid>
     </Grid>
   )
 }
