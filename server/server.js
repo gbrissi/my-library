@@ -46,13 +46,13 @@ async function main() {
                             if(error) {
                                 res.send('Error')
                             } if(response) {
-                                res.send('Success')
+                                res.send('Success').then(res.redirect('/profile'))
                             } else {
                                 res.send('Password does not match')
                             }
                         })
                     } catch (error) {
-                        res.send('some shit error fvck')
+                        res.send('A error has happened in password verification')
                     }            
                 } else (
                     res.send('Cannot find person')
