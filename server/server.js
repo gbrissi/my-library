@@ -59,7 +59,7 @@ async function main() {
                 )
             }
         } catch (error) {
-            res.send('A wild error appears!: ', error)
+            res.send('It is not possible to verify the user!: ', error)
         }
     })
 
@@ -73,5 +73,5 @@ main()
         });
 
 app.listen(port, () => {
-    console.log('the server is running in port', port)
+    console.log('The server is running in this following port:', port)
 })
