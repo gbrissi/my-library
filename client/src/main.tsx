@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import BookRegister from './components/BookRegister'
+import Header from './components/Header'
 import App from './App'
 import './index.css'
 import {
@@ -25,10 +27,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     {/*<ThemeProvider theme={theme}>*/}
       <BrowserRouter>
+        <Header/>
         <Routes>
           <Route path='/' element={<App/>}/>
           <Route path='/about-us' element={<h1>About Us</h1>}/>
-          <Route path='/dashboard' element={<h1>Admin Dashboard</h1>}/>
+          <Route path='/dashboard' element={<BookRegister/>}/>
           <Route path='/profile' element={<h1>My Profile</h1>}/>
         </Routes>
       </BrowserRouter>

@@ -33,11 +33,17 @@ const Header = () => {
   }
 
   return (
-    <HeaderContainer variant='outlined'>
+    <HeaderContainer position='static' variant='outlined'>
       <Content>
         <LogoContainer>
-          <SiteLogo data={mySiteLogo} type="image/svg+xml"/>
-          <SiteName>My Library</SiteName>
+          <Link to='/'>
+            <SiteLogo>
+              <LogoEmbed src={mySiteLogo} type="image/svg+xml"/>
+            </SiteLogo>
+          </Link>
+          <Link style={{textDecoration: 'none', color: '#ffffff'}} to='/'>
+            <SiteName>My Library</SiteName>
+          </Link>
         </LogoContainer>
         <UtilsContainer>
           <SignIn onClick={() => setActive(true)} variant="contained">Sign In</SignIn>
@@ -256,11 +262,14 @@ const LogoContainer = styled('div')`
 `
 
 const SiteLogo = styled('object')`
+  pointer-events: none;
+`
+
+const LogoEmbed = styled('embed')`
   filter: brightness(0) invert(1);
   width: 40px;
   height: 30px;
   margin-right: 0.6rem;
-  cursor: pointer;
 `
 
 const SiteName = styled('p')`
@@ -268,7 +277,6 @@ const SiteName = styled('p')`
   font-family: 'Roboto', sans-serif;
   letter-spacing: 1px;
   line-height: 1.3rem;
-  cursor: pointer;
 `
 
 export default Header
