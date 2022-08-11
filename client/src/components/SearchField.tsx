@@ -7,11 +7,11 @@ import { Container, OutlinedInput, InputLabel, InputAdornment } from '@mui/mater
 import SearchIcon from '@mui/icons-material/Search';
 
 
-function SearchField() {
+function SearchField(props: any) {
   return (
     <SearchContainer>
-        <BarLabel>Search for the book name</BarLabel>
-        <InputBar placeholder='Hungry Games: The Apocalypse of Tomorrow' id="outlined-input" endAdornment={
+        <BarLabel>{props.label}</BarLabel>
+        <InputBar placeholder={props.placeholder} id="outlined-input" endAdornment={
             <InputAdornment position='end'>
                 <SearchIcon/>
             </InputAdornment>

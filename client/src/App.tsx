@@ -7,7 +7,7 @@ function App() {
   return (
   <Container sx={{display:'flex', flexDirection:'column'}}>
     <Banner/>
-    <SearchField/>
+    <SearchField label='Search for the book' placeholder='Hungry Games: The void is awakening'/>
     <Library/>
   </Container>
   )
