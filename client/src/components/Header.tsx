@@ -2,7 +2,7 @@ import React from 'react';
 import {useState} from 'react';
 import {Link} from 'react-router-dom'
 import {makeStyles, styled} from '@mui/material/styles';
-import {AppBar, Button, SwipeableDrawer, Container, Select} from '@mui/material'
+import {AppBar, Button, SwipeableDrawer, Container, Select, IconButton, Tooltip} from '@mui/material'
 
 import Login from './Login';
 import mySiteLogo from '../assets/images/logo.svg'
@@ -46,7 +46,11 @@ const Header = () => {
           </Link>
         </LogoContainer>
         <UtilsContainer>
-          <SignIn onClick={() => setActive(true)} variant="contained">Sign In</SignIn>
+          <Tooltip title='Sign In' sx={{marginRight: '2rem'}}>
+            <IconButton onClick={() => setActive(true)}>
+              <PersonIcon sx={{color: 'white', fontSize: '1.7rem'}}/>  
+            </IconButton>
+          </Tooltip>
           {active && 
           <div>
             <Modal >
