@@ -28,6 +28,7 @@ const Genres = styled('div')`
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 15px;
 `
 
 const Genre = styled(Chip)`
