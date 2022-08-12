@@ -6,7 +6,7 @@ import bookImg from '../assets/images/1984-book.jpg'
 import {styled} from '@mui/material/styles';
 import { Grid } from '@mui/material';
 
-function Library() {
+export default function Library() {
   return (
     <Grid container sx={{
       padding: '10px',
@@ -113,5 +113,3 @@ function Library() {
     </Grid>
   )
 }
-
-export default Library

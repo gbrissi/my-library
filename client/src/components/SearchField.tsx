@@ -7,7 +7,7 @@ import { Container, OutlinedInput, InputLabel, InputAdornment } from '@mui/mater
 import SearchIcon from '@mui/icons-material/Search';
 
 
-function SearchField(props: any) {
+export default function SearchField(props: any) {
   return (
     <SearchContainer>
         <BarLabel>{props.label}</BarLabel>
@@ -32,5 +32,3 @@ const InputBar = styled(OutlinedInput)`
   background-color: white;
     width: 100%;
 `
-
-export default SearchField

@@ -6,7 +6,7 @@ import {Typography} from '@mui/material'
 import mySiteLogo from '../assets/images/logo.svg'
 import MenuIcon from '@mui/icons-material/Menu';
 
-function Banner() {
+export default function Banner() {
   return (
     <BannerContainer>
         <SiteLogo data={mySiteLogo} type="image/svg+xml"/>
@@ -29,5 +29,3 @@ const SiteLogo = styled('object')`
   width: 250px;
   filter: invert(29%) sepia(38%) saturate(1473%) hue-rotate(134deg) brightness(94%) contrast(103%);
 `
-
-export default Banner

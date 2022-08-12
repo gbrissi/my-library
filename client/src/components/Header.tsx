@@ -15,7 +15,7 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 var isItSelected = false;
 
 //header component
-const Header = () => {
+export default function Header() {
 
   //open/close login modal
   const [active, setActive] = useState(false)
@@ -282,5 +282,3 @@ const SiteName = styled('p')`
   letter-spacing: 1px;
   line-height: 1.3rem;
 `
-
-export default Header

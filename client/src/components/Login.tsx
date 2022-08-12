@@ -12,7 +12,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 var setDisable = false
 var visibility = false
-function Login() {
+export default function Login() {
 
     const navigate = useNavigate()
     const [isError, setIsError] = useState(false);
@@ -229,5 +229,3 @@ const SubmitButton = styled(Button)`
         background-color: #004d46;
     }
 `
-
-export default Login

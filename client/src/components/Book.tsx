@@ -4,7 +4,7 @@ import {styled} from '@mui/material/styles';
 
 import { Card, Grid, Typography, Chip } from '@mui/material';
 
-function Book(props: any) {
+export default function Book(props: any) {
   return (
     <BookCard>
         <BookImgContainer>
@@ -21,8 +21,6 @@ function Book(props: any) {
     </BookCard>  
   )
 }
-
-export default Book
 
 const Genres = styled('div')`
     display: flex;
