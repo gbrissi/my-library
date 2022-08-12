@@ -1,9 +1,10 @@
 import Banner from '../components/Banner'
 import SearchField from '../components/SearchField'
 import Library from '../components/Library'
+
 import {Container} from '@mui/material'
 
-function App() {
+export default function Home() {
   return (
   <Container sx={{display:'flex', flexDirection:'column'}}>
     <Banner/>
@@ -12,5 +13,3 @@ function App() {
   </Container>
   )
 }
-
-export default App

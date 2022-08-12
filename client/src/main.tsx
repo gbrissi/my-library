@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import BookRegister from './components/BookRegister'
 import Header from './components/Header'
-import App from './pages/Home'
+import Home from './pages/Home'
 import './index.css'
 import {
   BrowserRouter,
@@ -29,7 +29,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <BrowserRouter>
         <Header/>
         <Routes>
-          <Route path='/' element={<App/>}/>
+          <Route path='/' element={<Home/>}/>
           <Route path='/about-us' element={<h1>About Us</h1>}/>
           <Route path='/dashboard' element={<BookRegister/>}/>
           <Route path='/profile' element={<h1>My Profile</h1>}/>
