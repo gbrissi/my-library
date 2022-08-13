@@ -2,7 +2,7 @@ import React from 'react'
 
 import {styled} from '@mui/material/styles';
 
-import { Card, Grid, Typography, Chip } from '@mui/material';
+import { Card, Grid, Typography, Chip, Button } from '@mui/material';
 
 export default function Book(props: any) {
   return (
@@ -11,13 +11,11 @@ export default function Book(props: any) {
             <BookImg src={props.image} alt='Book Image'/>
         </BookImgContainer>
         <BookInformation>
-            <Title variant='body1'>{props.title}</Title>
-            <Subtitle variant='body2'>{props.subtitle}</Subtitle>
+            <Title variant='body1'>{props.title} - {props.subtitle}</Title>
+            <Subtitle variant='body2'></Subtitle>
             <Author variant='body2'>{props.author}</Author>
         </BookInformation>
-        <Genres>
-            <Genre label={props.genre}/>
-        </Genres>
+        <CustomButton>Submit</CustomButton>
     </BookCard>  
   )
 }
@@ -26,14 +24,14 @@ const Genres = styled('div')`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px;
+    padding: 10px;
 `
 
 const Genre = styled(Chip)`
     background-color: red;
     color: white;
     padding: 0 10px;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
 `
 
 const BookCard = styled(Card)`
@@ -84,4 +82,14 @@ const Author = styled(Typography)`
     text-align: center;
     margin-top: 5px;
     color: #505050;
+`
+
+const CustomButton = styled(Button)`
+    background-color: #0a8d8d;
+    padding: 5px 25px;
+    margin-bottom: 15px;
+    color: white;
+    :hover {
+        background-color: #09afaf;
+    }
 `
