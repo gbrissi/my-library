@@ -85,8 +85,9 @@ const Author = styled(Typography)`
 `
 
 const CustomButton = styled(Button)`
-    background-color: #0a8d8d;
-    padding: 5px 25px;
+    background-color: #00655d;
+    width: 90%;
+    padding: 10px 0;
     margin-bottom: 15px;
     color: white;
     :hover {
