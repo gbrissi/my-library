@@ -6,7 +6,6 @@ import {AppBar, Button, SwipeableDrawer, Container, Select, IconButton, Tooltip}
 
 import Login from './Login';
 import mySiteLogo from '../assets/images/logo.svg'
-import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import PersonIcon from '@mui/icons-material/Person';
 import InfoIcon from '@mui/icons-material/Info';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
@@ -141,19 +140,22 @@ const HeaderContainer = styled(AppBar)`
   justify-content: center;
   background-color: #00655d;
 `
+/*
+  const SignIn = styled(Button)`
+      padding: 1px 15px 1px 15px;
+      background-color: #434343;
+      margin-right: 1.4rem;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: white;
 
-const SignIn = styled(Button)`
-    padding: 1px 15px 1px 15px;
-    background-color: #434343;
-    margin-right: 1.4rem;
-    font-size: 1.2rem;
-    font-weight: 400;
-    color: white;
+      :hover {
+        background-color: #262626;
+      }
+  `
+*/
 
-    :hover {
-      background-color: #262626;
-    }
-`
+
 const DrawerContainer = styled('div')`
   display: flex;
   align-items: center;
