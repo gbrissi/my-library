@@ -159,7 +159,7 @@ const HeaderContainer = styled(AppBar)`
   align-items: center;
   justify-content: center;
   background-color: #00655d;
-  transition: 0.5s;
+  transition: 0.2s;
 `
 /*
   const SignIn = styled(Button)`
