@@ -32,76 +32,84 @@ export default function Header() {
   }
 
   return (
-    <HeaderContainer position='static' variant='outlined'>
-      <Content>
-        <LogoContainer>
-          <Link to='/'>
-            <SiteLogo>
-              <LogoEmbed src={mySiteLogo} type="image/svg+xml"/>
-            </SiteLogo>
-          </Link>
-          <Link style={{textDecoration: 'none', color: '#ffffff'}} to='/'>
-            <SiteName>My Library</SiteName>
-          </Link>
-        </LogoContainer>
-        <UtilsContainer>
-          <Tooltip title='Sign In' sx={{marginRight: '2rem'}}>
-            <IconButton onClick={() => setActive(true)}>
-              <PersonIcon sx={{color: 'white', fontSize: '1.7rem'}}/>  
-            </IconButton>
-          </Tooltip>
-          {active && 
-          <div>
-            <Modal >
-              <NoContainer onClick={() => setActive(false)}></NoContainer>
-              <Login/>
-            </Modal>
-          </div>
-          }
-          <IconContainer onClick={() => {
-            setIsSelected(checkState(isItSelected)), (true)
-          }}>
-            { isSelected &&
+    <>
+      <HeaderContainer position='fixed' variant='outlined'>
+        <Content>
+          <LogoContainer>
+            <Link to='/'>
+              <SiteLogo>
+                <LogoEmbed src={mySiteLogo} type="image/svg+xml"/>
+              </SiteLogo>
+            </Link>
+            <Link style={{textDecoration: 'none', color: '#ffffff'}} to='/'>
+              <SiteName>My Library</SiteName>
+            </Link>
+          </LogoContainer>
+          <UtilsContainer>
+            <Tooltip title='Sign In' sx={{marginRight: '2rem'}}>
+              <IconButton onClick={() => setActive(true)}>
+                <PersonIcon sx={{color: 'white', fontSize: '1.7rem'}}/>  
+              </IconButton>
+            </Tooltip>
+            {active && 
             <div>
-              <HamburguerIcon
-                icontransform={'translateX(-60px)'}
-                iconbackground={'transparent'}
-                iconboxshadow={'none'}
-                iconbeforetransform={'rotate(45deg) translate(35px, -35px)'}
-                iconaftertransform={'rotate(-45deg) translate(35px, 35px)'}
-              >
-              </HamburguerIcon>   
-              <SwipeableDrawer
-                sx={{overflow: 'hidden'}} 
-                anchor='right'
-                open={true}
-                onClose={() => {
-                  console.log('closed')
-                }}
-                onOpen={() => {
-                  console.log('open')
-                }}
-              >
-                <DrawerContainer>
-                  <DrawerItem><CustomLink to='/about-us'><InfoIcon sx={{width:'40px', height:'40px'}}/></CustomLink></DrawerItem>
-                  <DrawerItem><CustomLink to='/dashboard'><AdminPanelSettingsIcon sx={{width:'40px', height:'40px'}}/></CustomLink></DrawerItem>
-                  <DrawerItem><CustomLink to='/profile'><PersonIcon sx={{width:'40px', height:'40px'}}/></CustomLink></DrawerItem>
-                </DrawerContainer>
-              </SwipeableDrawer>
+              <Modal >
+                <NoContainer onClick={() => setActive(false)}></NoContainer>
+                <Login/>
+              </Modal>
             </div>
             }
-            { !isSelected &&
-              <HamburguerIcon
-            >
-              </HamburguerIcon>
-            }
+            <IconContainer onClick={() => {
+              setIsSelected(checkState(isItSelected)), (true)
+            }}>
+              { isSelected &&
+              <div>
+                <HamburguerIcon
+                  icontransform={'translateX(-60px)'}
+                  iconbackground={'transparent'}
+                  iconboxshadow={'none'}
+                  iconbeforetransform={'rotate(45deg) translate(35px, -35px)'}
+                  iconaftertransform={'rotate(-45deg) translate(35px, 35px)'}
+                >
+                </HamburguerIcon>   
+                <SwipeableDrawer
+                  sx={{overflow: 'hidden'}} 
+                  anchor='right'
+                  open={true}
+                  onClose={() => {
+                    console.log('closed')
+                  }}
+                  onOpen={() => {
+                    console.log('open')
+                  }}
+                >
+                  <DrawerContainer>
+                    <DrawerItem><CustomLink to='/about-us'><InfoIcon sx={{width:'40px', height:'40px'}}/></CustomLink></DrawerItem>
+                    <DrawerItem><CustomLink to='/dashboard'><AdminPanelSettingsIcon sx={{width:'40px', height:'40px'}}/></CustomLink></DrawerItem>
+                    <DrawerItem><CustomLink to='/profile'><PersonIcon sx={{width:'40px', height:'40px'}}/></CustomLink></DrawerItem>
+                  </DrawerContainer>
+                </SwipeableDrawer>
+              </div>
+              }
+              { !isSelected &&
+                <HamburguerIcon
+              >
+                </HamburguerIcon>
+              }
 
-          </IconContainer>
-        </UtilsContainer>
-      </Content>
-    </HeaderContainer>
+            </IconContainer>
+          </UtilsContainer>
+        </Content>
+      </HeaderContainer>
+      <MarginTop/>
+    </>
+    
   )
 }
+
+const MarginTop = styled('div')`
+  margin-top: 60px;
+`
 
 const NoContainer = styled('div')`
     display: flex;
