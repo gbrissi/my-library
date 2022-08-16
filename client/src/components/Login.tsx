@@ -87,7 +87,7 @@ export default function Login() {
     <Fade in>
         <Form>
             <Legend>
-                <h1 id='title'>LOG IN</h1>
+                <h1 id='title'>Login</h1>
             </Legend>
             <FormContainer>
                 <InputContainer>
@@ -199,6 +199,8 @@ const Legend = styled('legend')`
         letter-spacing: 1px;
         font-size: 1.4rem;
         color: white;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
     }
 `;
 

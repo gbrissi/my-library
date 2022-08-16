@@ -65,7 +65,7 @@ export default function Header() {
             </Tooltip>
             {active && 
             <div>
-              <Modal >
+              <Modal>
                 <NoContainer onClick={() => setActive(false)}></NoContainer>
                 <Login/>
               </Modal>
@@ -127,13 +127,13 @@ const NoContainer = styled('div')`
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    position: fixed;
     z-index: 998;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-    background-color: #0000005e;
+    background-color: #00000060;
     width: 100vw;
     height: 100vh;
 `
@@ -142,12 +142,11 @@ const Modal = styled('div')`
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-    background-color: #0000005e;
     width: 100vw;
     height: 100vh;
 `
