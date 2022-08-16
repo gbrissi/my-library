@@ -6,10 +6,10 @@ import {Container} from '@mui/material'
 
 export default function Home() {
   return (
-  <Container sx={{display:'flex', flexDirection:'column'}}>
-    <Banner/>
-    <SearchField label='Search for the book' placeholder='Hungry Games: The void is awakening'/>
-    <Library/>
-  </Container>
+    <Container disableGutters sx={{display:'flex', flexDirection:'column'}}>
+      <Banner/>
+      <SearchField label='Search for the book' placeholder='Hungry Games: The void is awakening'/>
+      <Library/>
+    </Container>
   )
 }
