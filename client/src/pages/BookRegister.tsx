@@ -25,6 +25,7 @@ const CustomIconButton = styled(IconButton)`
   margin-top: 2rem;
   background-color: #00655d;
   color: white;
+  margin-bottom: 2rem;
   :hover {
     background-color: teal;
   }
