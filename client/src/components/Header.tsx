@@ -26,11 +26,20 @@ export default function Header() {
     if(arg === false) {
       isItSelected = true;
     } else {
-      isItSelected = false;
     }
     return isItSelected;
   }
 
+  //disable scrolling if modal is active.
+  if(active) {
+    var x=window.scrollX;
+    var y=window.scrollY;
+    window.onscroll=function(){window.scrollTo(x, y);};
+  } else {
+    window.onscroll=function(){};
+  }
+
+  //hides the header when scrolling down, show up header when scrolling up
   var lastScrollTop = 0;
   const navbar = document.getElementById('header') as HTMLElement
   window.addEventListener("scroll", function() {

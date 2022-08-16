@@ -12,7 +12,7 @@ export default function BookRegister() {
       <div style={{marginTop: '8rem', width:'100%', }}>
         <SearchField label='Filter the books' placeholder='The Lord of the Rings: The Return of the King'/>
       </div>
-      <CustomButton variant='contained'>Add new book</CustomButton>
+      <CustomButton variant='contained'>Add new book +</CustomButton>
       <TableComponent/>
       <CustomIconButton size='large'>
         <AddIcon/>
@@ -36,8 +36,8 @@ const CustomButton = styled(Button)`
   padding: 18px 0px;
   margin: 10px;
   background-color: #00655d;
+  margin-bottom: 2rem;
   :hover {
     background-color: teal;
   }
-  margin-bottom: 2rem;
 `
