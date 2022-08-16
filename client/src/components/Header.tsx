@@ -31,9 +31,21 @@ export default function Header() {
     return isItSelected;
   }
 
+  var lastScrollTop = 0;
+  const navbar = document.getElementById('header') as HTMLElement
+  window.addEventListener("scroll", function() {
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop
+    if (scrollTop > lastScrollTop) {
+      navbar.style.top = '-50px'
+    } else {
+      navbar.style.top = '0'
+    }
+    lastScrollTop = scrollTop
+  })
+
   return (
     <>
-      <HeaderContainer position='fixed' variant='outlined'>
+      <HeaderContainer id='header' position='fixed' variant='outlined'>
         <Content>
           <LogoContainer>
             <Link to='/'>
@@ -108,7 +120,7 @@ export default function Header() {
 }
 
 const MarginTop = styled('div')`
-  margin-top: 60px;
+  margin-top: 50px;
 `
 
 const NoContainer = styled('div')`
@@ -147,6 +159,7 @@ const HeaderContainer = styled(AppBar)`
   align-items: center;
   justify-content: center;
   background-color: #00655d;
+  transition: 0.5s;
 `
 /*
   const SignIn = styled(Button)`
