@@ -2,7 +2,7 @@ import React from 'react'
 
 import {styled} from '@mui/material/styles';
 
-import { Container, OutlinedInput, InputLabel, InputAdornment } from '@mui/material';
+import {OutlinedInput, InputLabel, InputAdornment } from '@mui/material';
 
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -20,7 +20,7 @@ export default function SearchField(props: any) {
   )
 }
 
-const SearchContainer = styled(Container)`
+const SearchContainer = styled('div')`
   margin-bottom: 2rem;
 `
 

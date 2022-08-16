@@ -8,7 +8,9 @@ export default function Home() {
   return (
     <Container disableGutters sx={{display:'flex', flexDirection:'column'}}>
       <Banner/>
-      <SearchField label='Search for the book' placeholder='Hungry Games: The void is awakening'/>
+      <div style={{padding: '22px'}}>
+        <SearchField label='Search for the book' placeholder='Hungry Games: The void is awakening'/>
+      </div>
       <Library/>
     </Container>
   )
