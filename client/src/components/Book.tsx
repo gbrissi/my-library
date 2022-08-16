@@ -15,7 +15,7 @@ export default function Book(props: any) {
             <Subtitle variant='body2'></Subtitle>
             <Author variant='body2'>{props.author}</Author>
         </BookInformation>
-        <CustomButton>Submit</CustomButton>
+        <CustomButton>Redeem</CustomButton>
     </BookCard>  
   )
 }
