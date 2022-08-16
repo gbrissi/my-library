@@ -26,6 +26,7 @@ export default function Header() {
     if(arg === false) {
       isItSelected = true;
     } else {
+      isItSelected = false;
     }
     return isItSelected;
   }
@@ -73,15 +74,15 @@ export default function Header() {
               </IconButton>
             </Tooltip>
             {active && 
-            <div>
+            <>
               <Modal>
                 <NoContainer onClick={() => setActive(false)}></NoContainer>
                 <Login/>
               </Modal>
-            </div>
+            </>
             }
             <IconContainer onClick={() => {
-              setIsSelected(checkState(isItSelected)), (true)
+              setIsSelected(checkState(isItSelected))
             }}>
               { isSelected &&
               <div>
