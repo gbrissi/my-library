@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom'
 import {makeStyles, styled} from '@mui/material/styles';
 import {AppBar, Button, SwipeableDrawer, Container, Select, IconButton, Tooltip} from '@mui/material'
@@ -18,10 +18,11 @@ export default function Header() {
 
   //open/close login modal
   const [active, setActive] = useState(false)
-
   //change the stylization of menu icon
   const [isSelected, setIsSelected] = useState(false)
 
+
+  //check if the menu is selected or not to change the stylization
   var checkState = function(arg: boolean) {
     if(arg === false) {
       isItSelected = true;
@@ -40,22 +41,26 @@ export default function Header() {
     window.onscroll=function(){};
   }
 
-  //hides the header when scrolling down, show up header when scrolling up
-  var lastScrollTop = 0;
-  const navbar = document.getElementById('header') as HTMLElement
-  window.addEventListener("scroll", function() {
-    var scrollTop = window.pageYOffset || document.documentElement.scrollTop
-    if (scrollTop > lastScrollTop) {
-      navbar.style.top = '-50px'
-    } else {
-      navbar.style.top = '0'
-    }
-    lastScrollTop = scrollTop
+  //hides or open the header when scrolling
+  const [position, setPosition] = useState(window.pageYOffset)
+  const [visible, setVisible] = useState(true) 
+  useEffect(()=> {
+      const handleScroll = () => {
+         let moving = window.pageYOffset
+         
+         setVisible(position > moving);
+         setPosition(moving)
+      };
+      window.addEventListener("scroll", handleScroll);
+      return(() => {
+         window.removeEventListener("scroll", handleScroll);
+      })
   })
+  const cls = visible ? {top: "0", transition: "top 0.4s ease-out"} : {top: "-80px", transition: "top 0.4s ease-out"};
 
   return (
     <>
-      <HeaderContainer id='header' position='fixed' variant='outlined'>
+      <HeaderContainer sx={cls} id='header' position='fixed' variant='outlined'>
         <Content>
           <LogoContainer>
             <Link to='/'>
@@ -168,7 +173,6 @@ const HeaderContainer = styled(AppBar)`
   align-items: center;
   justify-content: center;
   background-color: #00655d;
-  transition: 0.2s;
 `
 /*
   const SignIn = styled(Button)`
