@@ -20,7 +20,9 @@ export default function Header() {
   const [active, setActive] = useState(false)
   //change the stylization of menu icon
   const [isSelected, setIsSelected] = useState(false)
-
+  //hides or open the header when scrolling
+  const [position, setPosition] = useState(window.pageYOffset)
+  const [visible, setVisible] = useState(true) 
 
   //check if the menu is selected or not to change the stylization
   var checkState = function(arg: boolean) {
@@ -41,9 +43,7 @@ export default function Header() {
     window.onscroll=function(){};
   }
 
-  //hides or open the header when scrolling
-  const [position, setPosition] = useState(window.pageYOffset)
-  const [visible, setVisible] = useState(true) 
+  //hides the header when scrolling down and shows it when scrolling up
   useEffect(()=> {
       const handleScroll = () => {
          let moving = window.pageYOffset
