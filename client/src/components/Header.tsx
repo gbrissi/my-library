@@ -56,7 +56,7 @@ export default function Header() {
          window.removeEventListener("scroll", handleScroll);
       })
   })
-  const cls = visible ? {top: "0", transition: "top 0.4s ease-out"} : {top: "-80px", transition: "top 0.4s ease-out"};
+  const cls = visible ? {top: "0"} : {top: "-80px"};
 
   return (
     <>
@@ -173,6 +173,7 @@ const HeaderContainer = styled(AppBar)`
   align-items: center;
   justify-content: center;
   background-color: #00655d;
+  transition: top 0.4s ease-in-out;
 `
 /*
   const SignIn = styled(Button)`
@@ -188,7 +189,6 @@ const HeaderContainer = styled(AppBar)`
       }
   `
 */
-
 
 const DrawerContainer = styled('div')`
   display: flex;
