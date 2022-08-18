@@ -246,6 +246,7 @@ const HamburguerIcon = styled('div')`
   width: 20px;
   height: 2px;
   position: absolute;
+  z-index: -1;
   background: #fff;
   box-shadow: 0 2px 5px rgba(255,101,47,.2);
   transform: ${(props: myProps) => props.icontransform};
