@@ -31,12 +31,17 @@ export default function Library() {
         marginTop: '15px'
       },
       ['@media (max-width: 470px)']: {
-        width: '70vw',
+        width: '75vw',
         alignSelf: 'center',
         marginTop: '15px',
         height: '260px'
       },
-
+      ['@media (max-width: 380px)']: {
+        width: '80vw',
+        alignSelf: 'center',
+        marginTop: '15px',
+        height: '260px'
+      }
       }}>
       <Grid item xs={12} sm={6} md={4} lg={3}>
         <Book 
