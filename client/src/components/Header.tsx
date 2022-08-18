@@ -34,13 +34,19 @@ export default function Header() {
     return isItSelected;
   }
 
-  //disable scrolling if modal is active.
-  if(active) {
-    var x=window.scrollX;
-    var y=window.scrollY;
-    window.onscroll=function(){window.scrollTo(x, y);};
-  } else {
-    window.onscroll=function(){};
+  //disable scrolling when the modal is active
+  const disableScrolling = function(isDisabled: boolean) {
+    const body = document.querySelector('body')
+    if(isDisabled && body != null) {
+      console.log(isDisabled)
+      body.style.overflow='hidden'
+      console.log('it is supposed to be hidden')
+    } else if (!isDisabled && body != null) {
+      body.style.overflow='auto'
+      console.log('it is supposed to be shown')
+    } else {
+      console.log('error in searching "body" in DOM')
+    }
   }
 
   //hides the header when scrolling down and shows it when scrolling up
@@ -80,8 +86,9 @@ export default function Header() {
             </Tooltip>
             {active && 
             <>
+              {disableScrolling(true)}
               <Modal>
-                <NoContainer onClick={() => setActive(false)}></NoContainer>
+                <NoContainer onClick={async () => {await setActive(false), disableScrolling(false)}}></NoContainer>
                 <Login/>
               </Modal>
             </>
