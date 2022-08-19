@@ -10,6 +10,7 @@ import {
   Routes,
   Route,
 } from 'react-router-dom'
+import AboutUs from './pages/AboutUs'
 /*
 import {createTheme, ThemeProvider} from '@mui/material/styles'
 
@@ -31,7 +32,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Header/>
         <Routes>
           <Route path='/' element={<Home/>}/>
-          <Route path='/about-us' element={<h1>About Us</h1>}/>
+          <Route path='/about-us' element={<AboutUs/>}/>
           <Route path='/dashboard' element={<BookRegister/>}/>
           <Route path='/profile' element={<h1>My Profile</h1>}/>
         </Routes>
