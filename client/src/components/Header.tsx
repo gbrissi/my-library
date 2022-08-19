@@ -9,6 +9,7 @@ import mySiteLogo from '../assets/images/logo.svg'
 import PersonIcon from '@mui/icons-material/Person';
 import InfoIcon from '@mui/icons-material/Info';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import MenuIcon from '@mui/icons-material/Menu';
 
 //initial variables
 var isItSelected = false;
@@ -118,19 +119,30 @@ export default function Header() {
                   }}
                 >
                   <DrawerContainer>
-                    <DrawerItem><CustomLink to='/about-us'><InfoIcon sx={{width:'40px', height:'40px'}}/></CustomLink></DrawerItem>
-                    <DrawerItem><CustomLink to='/dashboard'><AdminPanelSettingsIcon sx={{width:'40px', height:'40px'}}/></CustomLink></DrawerItem>
-                    <DrawerItem><CustomLink to='/profile'><PersonIcon sx={{width:'40px', height:'40px'}}/></CustomLink></DrawerItem>
+                    <DrawerItem>
+                      <IconButton>
+                        <CustomLink to='/about-us'><InfoIcon sx={{width:'40px', height:'40px'}}/></CustomLink>
+                      </IconButton>
+                    </DrawerItem>
+                    <DrawerItem>
+                      <IconButton>
+                        <CustomLink to='/dashboard'><AdminPanelSettingsIcon sx={{width:'40px', height:'40px'}}/></CustomLink>
+                      </IconButton>
+                    </DrawerItem>
+                    <DrawerItem>
+                      <IconButton>
+                        <CustomLink to='/profile'><PersonIcon sx={{width:'40px', height:'40px'}}/></CustomLink>
+                      </IconButton>
+                    </DrawerItem>
                   </DrawerContainer>
                 </SwipeableDrawer>
               </div>
               }
               { !isSelected &&
-                <HamburguerIcon
-              >
-                </HamburguerIcon>
+                <IconButton>
+                    <MenuIcon sx={{color: 'white', width: '25px', height: '25px'}}/>
+                </IconButton>
               }
-
             </IconContainer>
           </UtilsContainer>
         </Content>
@@ -252,7 +264,6 @@ const HamburguerIcon = styled('div')`
   transform: ${(props: myProps) => props.icontransform};
   background: ${(props: myProps) => props.iconbackground};
   box-shadow: ${(props: myProps) => props.iconboxshadow};
-  transition: all .5s ease-in-out;
 
   ::before {
     transform: translateY(-6px);
