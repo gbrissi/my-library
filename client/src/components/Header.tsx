@@ -67,7 +67,7 @@ export default function Header() {
 
   return (
     <>
-      <HeaderContainer sx={cls} id='header' position='fixed' variant='outlined'>
+      <HeaderContainer sx={cls} id='header' position='fixed'>
         <Content>
           <LogoContainer>
             <Link to='/'>
