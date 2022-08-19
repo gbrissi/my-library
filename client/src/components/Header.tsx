@@ -120,19 +120,25 @@ export default function Header() {
                 >
                   <DrawerContainer>
                     <DrawerItem>
-                      <IconButton>
-                        <CustomLink to='/about-us'><InfoIcon sx={{width:'40px', height:'40px'}}/></CustomLink>
-                      </IconButton>
+                      <Tooltip title='Info'>
+                        <IconButton>
+                          <CustomLink to='/about-us'><InfoIcon sx={{width:'40px', height:'40px'}}/></CustomLink>
+                        </IconButton>
+                      </Tooltip>
                     </DrawerItem>
                     <DrawerItem>
-                      <IconButton>
-                        <CustomLink to='/dashboard'><AdminPanelSettingsIcon sx={{width:'40px', height:'40px'}}/></CustomLink>
-                      </IconButton>
+                      <Tooltip title='Dashboard'>
+                        <IconButton>
+                          <CustomLink to='/dashboard'><AdminPanelSettingsIcon sx={{width:'40px', height:'40px'}}/></CustomLink>
+                        </IconButton>
+                      </Tooltip>
                     </DrawerItem>
                     <DrawerItem>
-                      <IconButton>
-                        <CustomLink to='/profile'><PersonIcon sx={{width:'40px', height:'40px'}}/></CustomLink>
-                      </IconButton>
+                      <Tooltip title='Profile'>
+                        <IconButton>
+                          <CustomLink to='/profile'><PersonIcon sx={{width:'40px', height:'40px'}}/></CustomLink>
+                        </IconButton>
+                      </Tooltip>
                     </DrawerItem>
                   </DrawerContainer>
                 </SwipeableDrawer>
@@ -234,7 +240,7 @@ const CustomLink = styled(Link)`
   color: white;
   font-family: 'Roboto', sans-serif;
   text-align: center;
-  padding: 15px;
+  padding: 5px;
   width: 100%;
 `
 

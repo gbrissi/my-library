@@ -1,6 +1,6 @@
 import React from 'react'
 import {styled} from '@mui/material/styles'
-import {Container, Button, IconButton, Fade} from '@mui/material'
+import {Container, Button, IconButton, Fade, Tooltip} from '@mui/material'
 import AddIcon from '@mui/icons-material/Add';
 
 import TableComponent from '../components/TableComponent'
@@ -15,9 +15,11 @@ export default function BookRegister() {
         </div>
         <CustomButton variant='contained'>Add new book +</CustomButton>
         <TableComponent/>
-        <CustomIconButton size='large'>
-          <AddIcon/>
-        </CustomIconButton>
+        <Tooltip title='Add new book'>
+          <CustomIconButton size='large'>
+            <AddIcon/>
+          </CustomIconButton>
+        </Tooltip>
       </Container>
     </Fade>
   )
