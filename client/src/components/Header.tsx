@@ -210,7 +210,6 @@ const HeaderContainer = styled(AppBar)`
       font-size: 1.2rem;
       font-weight: 400;
       color: white;
-
       :hover {
         background-color: #262626;
       }
@@ -272,7 +271,6 @@ const HamburguerIcon = styled('div')`
   transform: ${(props: myProps) => props.icontransform};
   background: ${(props: myProps) => props.iconbackground};
   box-shadow: ${(props: myProps) => props.iconboxshadow};
-
   ::before {
     transform: translateY(-6px);
     content: '';
@@ -284,7 +282,6 @@ const HamburguerIcon = styled('div')`
     transition: all .5s ease-in-out;
     transform: ${(props: myProps) => props.iconbeforetransform};
   }
-
   ::after {
     transform: translateY(6px);
     content: '';
@@ -296,7 +293,6 @@ const HamburguerIcon = styled('div')`
     transition: all .5s ease-in-out;
     transform: ${(props: myProps) => props.iconaftertransform};
   }
-
 `
 
 const UtilsContainer = styled('div')`
