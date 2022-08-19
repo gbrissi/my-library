@@ -1,6 +1,6 @@
 import React from 'react'
 import {styled} from '@mui/material/styles'
-import {Container, Button, IconButton} from '@mui/material'
+import {Container, Button, IconButton, Fade} from '@mui/material'
 import AddIcon from '@mui/icons-material/Add';
 
 import TableComponent from '../components/TableComponent'
@@ -8,16 +8,19 @@ import SearchField from '../components/SearchField'
 
 export default function BookRegister() {
   return (
-    <Container sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-      <div style={{marginTop: '8rem', width:'100%', }}>
-        <SearchField label='Filter the books' placeholder='The Lord of the Rings: The Return of the King'/>
-      </div>
-      <CustomButton variant='contained'>Add new book +</CustomButton>
-      <TableComponent/>
-      <CustomIconButton size='large'>
-        <AddIcon/>
-      </CustomIconButton>
-    </Container>
+    <Fade in timeout={300}>
+      <Container sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+        <div style={{marginTop: '8rem', width:'100%', }}>
+          <SearchField label='Filter the books' placeholder='The Lord of the Rings: The Return of the King'/>
+        </div>
+        <CustomButton variant='contained'>Add new book +</CustomButton>
+        <TableComponent/>
+        <CustomIconButton size='large'>
+          <AddIcon/>
+        </CustomIconButton>
+      </Container>
+    </Fade>
+
   )
 }
 
