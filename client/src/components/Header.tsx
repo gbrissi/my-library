@@ -80,7 +80,7 @@ export default function Header() {
             </Link>
           </LogoContainer>
           <UtilsContainer>
-            <Tooltip title='Sign In' sx={{marginRight: '2rem'}}>
+            <Tooltip title='Profile' sx={{marginRight: '2rem'}}>
               <IconButton onClick={() => setActive(true)}>
                 <PersonIcon sx={{color: 'white', fontSize: '1.7rem'}}/>  
               </IconButton>
@@ -139,9 +139,11 @@ export default function Header() {
               </div>
               }
               { !isSelected &&
-                <IconButton>
+                <Tooltip title='Menu'>
+                  <IconButton>
                     <MenuIcon sx={{color: 'white', width: '25px', height: '25px', zIndex: '-1'}}/>
-                </IconButton>
+                  </IconButton>
+                </Tooltip>
               }
             </IconContainer>
           </UtilsContainer>
