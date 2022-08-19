@@ -140,7 +140,7 @@ export default function Header() {
               }
               { !isSelected &&
                 <IconButton>
-                    <MenuIcon sx={{color: 'white', width: '25px', height: '25px'}}/>
+                    <MenuIcon sx={{color: 'white', width: '25px', height: '25px', zIndex: '-1'}}/>
                 </IconButton>
               }
             </IconContainer>

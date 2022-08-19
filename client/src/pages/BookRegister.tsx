@@ -20,7 +20,6 @@ export default function BookRegister() {
         </CustomIconButton>
       </Container>
     </Fade>
-
   )
 }
 
