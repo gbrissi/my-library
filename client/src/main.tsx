@@ -34,7 +34,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path='/' element={<Home/>}/>
           <Route path='/about-us' element={<AboutUs/>}/>
           <Route path='/dashboard' element={<BookRegister/>}/>
-          <Route path='/profile' element={<h1>My Profile</h1>}/>
         </Routes>
       </BrowserRouter>
     {/*</ThemeProvider>*/}

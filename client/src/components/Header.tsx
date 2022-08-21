@@ -10,6 +10,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import InfoIcon from '@mui/icons-material/Info';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import MenuIcon from '@mui/icons-material/Menu';
+import HomeIcon from '@mui/icons-material/Home';
 
 //initial variables
 var isItSelected = false;
@@ -67,7 +68,7 @@ export default function Header() {
 
   return (
     <>
-      <HeaderContainer sx={cls} id='header' position='fixed'>
+      <HeaderContainer id='header' position='fixed'>
         <Content>
           <LogoContainer>
             <Link to='/'>
@@ -134,9 +135,9 @@ export default function Header() {
                       </Tooltip>
                     </DrawerItem>
                     <DrawerItem>
-                      <Tooltip title='Profile'>
+                      <Tooltip title='Home'>
                         <IconButton>
-                          <CustomLink to='/profile'><PersonIcon sx={{width:'40px', height:'40px'}}/></CustomLink>
+                          <CustomLink to='/'><HomeIcon sx={{width:'40px', height:'40px'}}/></CustomLink>
                         </IconButton>
                       </Tooltip>
                     </DrawerItem>
