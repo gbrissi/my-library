@@ -8,6 +8,8 @@ const db = require('./db/_database')
 
 const cors = require('cors');
 
+db();
+
 const corsOption = {
     origin: ['http://localhost:3000'],
 };
@@ -64,12 +66,16 @@ async function main() {
 
 }
 
-main()
+main();
+
+/*
+    main()
     .then(() => db.destroy())
     .catch((err) => {
         console.error(err);
         return db.destroy();
         });
+*/
 
 app.listen(port, () => {
     console.log('The server is running in this following port:', port)
