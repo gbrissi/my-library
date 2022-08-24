@@ -6,7 +6,6 @@ const bcrypt = require('bcrypt')
 const User = require('./db/models/User')
 const db = require('./db/_database')
 
-
 const cors = require('cors');
 
 const corsOption = {
