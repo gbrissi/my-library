@@ -65,13 +65,7 @@ async function main() {
 
 }
 
-main().then(() => {
-    setupDb().db.destroy()
-    .catch((err) => {
-        console.error(err);
-        return db().destroy();
-    })
-});
+main()
 
 /*
     main()
