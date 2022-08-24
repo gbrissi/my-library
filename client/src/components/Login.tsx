@@ -68,7 +68,7 @@ export default function Login() {
         await axios(options).then(res => {
             if(res.data == 'Success') {
                 console.log('Connected with success')
-                navigate('/profile')
+                navigate('/dashboard')
             } else {
                 username.value = ''
                 password.value = ''
