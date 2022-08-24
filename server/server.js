@@ -3,8 +3,8 @@ process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 const express = require('express')
 const app = express()
 const bcrypt = require('bcrypt')
-const User = require('./models/User')
-const db = require('./util/_database')
+const User = require('./db/models/User')
+const db = require('./db/_database')
 
 
 const cors = require('cors');
@@ -16,7 +16,7 @@ const corsOption = {
 app.use(express.json())
 app.use(cors(corsOption));
 
-const port = process.env.PORT;
+const port = process.env.PORT || 8080;
 
 async function main() {
 
