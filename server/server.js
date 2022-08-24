@@ -4,11 +4,11 @@ const express = require('express')
 const app = express()
 const bcrypt = require('bcrypt')
 const User = require('./db/models/User')
-const db = require('./db/_database')
+const setupDb = require('./db/_database')
 
 const cors = require('cors');
 
-db();
+setupDb();
 
 const corsOption = {
     origin: ['http://localhost:3000'],
@@ -66,7 +66,7 @@ async function main() {
 }
 
 main().then(() => {
-    db().destroy()
+    setupDb().db.destroy()
     .catch((err) => {
         console.error(err);
         return db().destroy();
