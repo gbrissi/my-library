@@ -12,7 +12,6 @@ const cors = require('cors');
 const corsOption = {
     origin: ['http://localhost:3000'],
 };
-
 //if you want in every domain then
 app.use(express.json())
 app.use(cors(corsOption));
@@ -37,6 +36,32 @@ async function main() {
    app.get('/', (req, res) => {
         res.status(200).send(users)
    })
+
+    app.post('/users/login', async (req, res) => {
+        try {
+            for(i=0; i<users.length ;i++) {
+                if(req.body.username == users[i].username){
+                    try {
+                        bcrypt.compare(req.body.password, users[i].password, function(error, response) {
+                            if(error) {
+                                res.send('Error')
+                            } if(response) {
+                                res.send('Success')
+                            } else {
+                                res.send('Password does not match')
+                            }
+                        })
+                    } catch (error) {
+                        res.send('A error has happened in password verification')
+                    }            
+                } else (
+                    res.send('Cannot find person')
+                )
+            }
+        } catch (error) {
+            res.send('It is not possible to verify the user!: ', error)
+        }
+    })
 
 }
 
