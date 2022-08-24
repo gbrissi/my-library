@@ -33,7 +33,6 @@ async function main() {
    const users = await User.query();
 
    //API
-
    app.get('/', (req, res) => {
         res.status(200).send(users)
    })
@@ -66,7 +65,13 @@ async function main() {
 
 }
 
-main();
+main().then(() => {
+    db().destroy()
+    .catch((err) => {
+        console.error(err);
+        return db().destroy();
+    })
+});
 
 /*
     main()
