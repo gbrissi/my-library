@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "makeseed": " yarn knex seed:make --knexfile ./util/database.js dev",
+    "makeseed": " yarn knex seed:make --knexfile ./util/knexfile.js dev",
     "seed": "yarn knex seed:run --knexfile ./db/knexfile.js",
     "migrate": "yarn knex migrate:latest --knexfile ./db/knexfile.js",
     "down": "yarn knex migrate:down --knexfile ./db/knexfile.js",
