@@ -2,21 +2,19 @@
 const {knexSnakeCaseMappers} = require('objection');
 
 module.exports = {
-  development: {
-    client: 'pg',
-    connection: process.env.DATABASE_URL || {
-      host: '127.0.0.1',
-      database: 'my-library',
-      user: 'postgres',
-      password: 'admin'
-    },
-    migrations: {
-      directory: './migrations',
-      tableName: 'knex_migrations'
-    },
-    seeds: {
-      directory: './seeds'
-    },
-    ...knexSnakeCaseMappers
-  }
+  client: 'pg',
+  connection: process.env.DATABASE_URL || {
+    host: '127.0.0.1',
+    database: 'my-library',
+    user: 'postgres',
+    password: 'admin'
+  },
+  migrations: {
+    directory: './migrations',
+    tableName: 'knex_migrations'
+  },
+  seeds: {
+    directory: './seeds'
+  },
+  ...knexSnakeCaseMappers
 };
