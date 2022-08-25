@@ -7,6 +7,7 @@ const User = require('./db/models/User')
 const setupDb = require('./db/_database')
 
 const cors = require('cors');
+const { reset } = require('nodemon');
 
 setupDb();
 
@@ -20,15 +21,7 @@ app.use(cors(corsOption));
 const port = process.env.PORT || 8080;
 
 async function main() {
-
-    //INSERTING A "FICTIONAL ROW" IN users TABLE.
-    /* 
-    await User.query().insert({
-        username: 'KellyG',
-        password: await bcrypt.hash('tomatoes', 10)
-    })
-    */
-
+    
    //SELECT * FROM users
    const users = await User.query();
 
@@ -38,31 +31,25 @@ async function main() {
    })
 
     app.post('/users/login', async (req, res) => {
-        try {
-            i = 0
-            while(i < users.length, i++) {
-                if(req.body.username == users[i].username){
-                    try {
-                        bcrypt.compare(req.body.password, users[i].password, function(error, response) {
-                            if(error) {
-                                res.send('Error')
-                            } if(response) {
-                                res.send('Success')
-                            } else {
-                                res.send('Password does not match')
-                            }
-                        })
-                    } catch (error) {
-                        res.send('A error has happened in password verification')
-                    }            
-                } 
+        const siteUser = users.find(users => users.username = req.body.username)
+        if (siteUser == null) {
+            return res.status(200).send('Cannot find user')
+        } else {
+            try {
+                bcrypt.compare(req.body.password, siteUser.password, function(error, response) {
+                    if(error) {
+                        return res.status(200).send('Error')
+                    } if (response) {
+                        return res.status(200).send('Success')
+                    } else {
+                        return res.status(200).send('Password does not match')
+                    }
+                })
+            } catch {
+                res.status(200).send('error')
             }
-            if(i == (users.length - 1)) {
-                res.send("Can't find user")
-            }
-        } catch (error) {
-            res.send('The error is the following one: ', error)
         }
+
     })
 
 }

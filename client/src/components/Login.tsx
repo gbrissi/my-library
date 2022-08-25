@@ -35,7 +35,6 @@ export default function Login() {
         } else {
             setDisable = true
         }
-        console.log(setDisable)
         return setDisable
     }
 
@@ -55,7 +54,7 @@ export default function Login() {
         const password = document.getElementById('password') as HTMLFormElement
         const usernamePassword = JSON.stringify({'username': username.value, 'password': password.value}) 
         const options = {
-            url: 'https://library-online-webproject.herokuapp.com/users/login' || 'http://localhost:8080/users/login',
+            url: 'http://localhost:8080/users/login',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',
@@ -68,13 +67,13 @@ export default function Login() {
 
         await axios(options).then(res => {
             if(res.data == 'Success') {
-                console.log('Connected with success')
+                console.log('Connected')
                 async function navigateDash() {
                     await navigate('/dashboard')
                     await function() {
                         const body = document.querySelector('body')
                         if(body != null) {
-                          body.style.overflow = 'auto'
+                            body.style.overflow = 'auto'
                         }
                     }
                 }
