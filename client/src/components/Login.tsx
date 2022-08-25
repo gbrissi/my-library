@@ -55,7 +55,7 @@ export default function Login() {
         const password = document.getElementById('password') as HTMLFormElement
         const usernamePassword = JSON.stringify({'username': username.value, 'password': password.value}) 
         const options = {
-            url: 'https://library-online-webproject.herokuapp.com/users/login' || 'https://localhost:8080/login',
+            url: 'https://library-online-webproject.herokuapp.com/users/login' || 'https://localhost:8080/users/login',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',

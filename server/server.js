@@ -31,10 +31,11 @@ async function main() {
 
    //SELECT * FROM users
    const users = await User.query();
+   console.log(users)
 
    //API
    app.get('/', (req, res) => {
-        res.status(200).send(users)
+        res.send(users)
    })
 
     app.post('/users/login', async (req, res) => {

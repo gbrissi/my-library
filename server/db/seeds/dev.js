@@ -8,5 +8,11 @@ exports.seed = async function(knex) {
       password: '$2b$10$L5hUA/ciNVHEi/zmaPPqcufRWiyNRjWUziiX94OmeNYGw/2S8Aia.',
       role: 'admin'
     },
+    {
+      id: 2,
+      username: 'user',
+      password: 'user1',
+      role: 'user'
+    }
   ]);
 };
