@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt')
+
 exports.seed = async function(knex) {
   // Deletes ALL existing entries
   await knex.raw('TRUNCATE TABLE "user" CASCADE')
@@ -5,13 +7,13 @@ exports.seed = async function(knex) {
     {
       id: 1, 
       username: 'KellyG',
-      password: '$2b$10$L5hUA/ciNVHEi/zmaPPqcufRWiyNRjWUziiX94OmeNYGw/2S8Aia.',
+      password: await bcrypt.hash('tomatoes', 10),
       role: 'admin'
     },
     {
       id: 2,
       username: 'user',
-      password: 'user1',
+      password: await bcrypt.hash('user1', 10),
       role: 'user'
     }
   ]);

@@ -31,16 +31,16 @@ async function main() {
 
    //SELECT * FROM users
    const users = await User.query();
-   console.log(users)
 
    //API
    app.get('/', (req, res) => {
-        res.send(users)
+        res.status(200).send(users)
    })
 
     app.post('/users/login', async (req, res) => {
         try {
-            for(i=0; i<users.length ;i++) {
+            i = 0
+            while(i < users.length, i++) {
                 if(req.body.username == users[i].username){
                     try {
                         bcrypt.compare(req.body.password, users[i].password, function(error, response) {
@@ -55,12 +55,13 @@ async function main() {
                     } catch (error) {
                         res.send('A error has happened in password verification')
                     }            
-                } else (
-                    res.send('Cannot find person')
-                )
+                } 
+            }
+            if(i == (users.length - 1)) {
+                res.send("Can't find user")
             }
         } catch (error) {
-            res.send('It is not possible to verify the user!: ', error)
+            res.send('The error is the following one: ', error)
         }
     })
 
