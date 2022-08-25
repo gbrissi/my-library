@@ -3,7 +3,10 @@ const {knexSnakeCaseMappers} = require('objection');
 
 module.exports = {
   client: 'pg',
-  connection: process.env.DATABASE_URL || {
+  connection: {
+    connectionString: process.env.DATABASE_URL,
+    ssl: { rejectUnauthorized: false }
+  } || {
     host: '127.0.0.1',
     database: 'my-library',
     user: 'postgres',
