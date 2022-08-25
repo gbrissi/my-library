@@ -39,6 +39,7 @@ export default function Login() {
         return setDisable
     }
 
+
     function keyDown(e: any) {
         if (e.keyCode === 13) {
             console.log('enter')
@@ -68,7 +69,16 @@ export default function Login() {
         await axios(options).then(res => {
             if(res.data == 'Success') {
                 console.log('Connected with success')
-                navigate('/dashboard')
+                async function navigateDash() {
+                    await navigate('/dashboard')
+                    await function() {
+                        const body = document.querySelector('body')
+                        if(body != null) {
+                          body.style.overflow = 'auto'
+                        }
+                    }
+                }
+                navigateDash();
             } else {
                 username.value = ''
                 password.value = ''
@@ -98,7 +108,6 @@ export default function Login() {
                     <ErrorCode>User and/or password incorrect(s)</ErrorCode>
                     }
                     </InputErrorCode>
-
                     <CustomOutlinedInput required={true} error={isError} id='user'/>
                 </InputContainer>
                 <InputContainer>
