@@ -2,6 +2,7 @@ import Banner from '../components/Banner'
 import SearchField from '../components/SearchField'
 import Library from '../components/Library'
 import {Fade} from '@mui/material'
+import Header from '../components/Header'
 
 import {Container} from '@mui/material'
 
