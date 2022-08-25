@@ -5,23 +5,27 @@ import AddIcon from '@mui/icons-material/Add';
 
 import TableComponent from '../components/TableComponent'
 import SearchField from '../components/SearchField'
+import Header from '../components/Header';
 
 export default function BookRegister() {
   return (
-    <Fade in timeout={300}>
-      <Container sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-        <div style={{marginTop: '8rem', width:'100%', }}>
-          <SearchField label='Filter the books' placeholder='The Lord of the Rings: The Return of the King'/>
-        </div>
-        <CustomButton variant='contained'>Add new book +</CustomButton>
-        <TableComponent/>
-        <Tooltip title='Add new book'>
-          <CustomIconButton size='large'>
-            <AddIcon/>
-          </CustomIconButton>
-        </Tooltip>
-      </Container>
-    </Fade>
+    <>
+      <Header/>
+      <Fade in timeout={300}>
+        <Container sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+          <div style={{marginTop: '8rem', width:'100%', }}>
+            <SearchField label='Filter the books' placeholder='The Lord of the Rings: The Return of the King'/>
+          </div>
+          <CustomButton variant='contained'>Add new book +</CustomButton>
+          <TableComponent/>
+          <Tooltip title='Add new book'>
+            <CustomIconButton size='large'>
+              <AddIcon/>
+            </CustomIconButton>
+          </Tooltip>
+        </Container>
+      </Fade>
+    </>
   )
 }
 

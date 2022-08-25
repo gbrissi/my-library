@@ -7,14 +7,17 @@ import {Container} from '@mui/material'
 
 export default function Home() {
   return (
-    <Fade in timeout={300}>
-      <Container disableGutters sx={{display:'flex', flexDirection:'column'}}>
-        <Banner/>
-        <div style={{padding: '22px'}}>
-          <SearchField label='Search for the book' placeholder='Hungry Games: The void is awakening'/>
-        </div>
-        <Library/>
-      </Container>
-    </Fade>
+    <>
+      <Header/>
+      <Fade in timeout={300}>
+        <Container disableGutters sx={{display:'flex', flexDirection:'column'}}>
+          <Banner/>
+          <div style={{padding: '22px'}}>
+            <SearchField label='Search for the book' placeholder='Hungry Games: The void is awakening'/>
+          </div>
+          <Library/>
+        </Container>
+      </Fade>
+    </>
   )
 }

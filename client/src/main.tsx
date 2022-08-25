@@ -29,7 +29,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     {/*<ThemeProvider theme={theme}>*/}
       <BrowserRouter>
-        <Header/>
+        {/*<Header/>*/}
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/about-us' element={<AboutUs/>}/>
