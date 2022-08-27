@@ -1,13 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {styled} from '@mui/material/styles'
-import {Container, Button, IconButton, Fade, Tooltip} from '@mui/material'
+import {Container, Button, IconButton, Fade, Tooltip, Modal} from '@mui/material'
 import AddIcon from '@mui/icons-material/Add';
+import RegisterBook from '../components/RegisterBook';
 
 import TableComponent from '../components/TableComponent'
 import SearchField from '../components/SearchField'
 import Header from '../components/Header';
+import axios from 'axios';
 
 export default function BookRegister() {
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <>
       <Header/>
@@ -16,10 +27,21 @@ export default function BookRegister() {
           <div style={{marginTop: '8rem', width:'100%', }}>
             <SearchField label='Filter the books' placeholder='The Lord of the Rings: The Return of the King'/>
           </div>
-          <CustomButton variant='contained'>Add new book +</CustomButton>
+          <CustomButton onClick={handleOpen} variant='contained'>Add new book +</CustomButton>
+          <Modal
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
+            open={open}
+            onClose={handleClose}
+          >
+            <RegisterBook/>
+          </Modal>
           <TableComponent/>
           <Tooltip title='Add new book'>
-            <CustomIconButton size='large'>
+            <CustomIconButton onClick={handleOpen} size='large'>
               <AddIcon/>
             </CustomIconButton>
           </Tooltip>

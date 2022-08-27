@@ -32,9 +32,10 @@ export default function TableComponent() {
       <Table sx={{padding: '5px', width: '100%'}} aria-label="a data table">
         <TableHead>
           <TableRow>
-            <TableCell>Title</TableCell>
+            <TableCell align='left'>Title</TableCell>
             <TableCell align='center'>Subtitle</TableCell>
             <TableCell align='center'>Author</TableCell>
+            <TableCell align='center'>ISBN</TableCell>
             <TableCell align='right'>Quantity</TableCell>
           </TableRow>
         </TableHead>
@@ -45,6 +46,7 @@ export default function TableComponent() {
                 <TableCell>{book.title}</TableCell>
                 <TableCell align='center'>{book.subtitle}</TableCell>
                 <TableCell align='center'>{book.author}</TableCell>
+                <TableCell align='center'>{book.isbn}</TableCell>
                 <TableCell align='right'>{book.quantity}</TableCell>
               </TableRow>
             )
