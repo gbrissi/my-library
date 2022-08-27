@@ -1,7 +1,32 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import axios from 'axios';
 import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper} from '@mui/material'
 
-export default function TableComponent(props: any) {
+export default function TableComponent() {
+
+  const [booksData, setBooksData] = useState<any[]>([])
+
+  const options = {
+    /* || */
+    url: 'https://library-online-webproject.herokuapp.com/books' || 'http://localhost:8080/books',
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json;charset=UTF-8',
+        "Access-Control-Allow-Origin": "*",
+        'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': '*'
+    },
+  };
+
+  useEffect(() => {
+    axios(options).then(res => {
+      setBooksData(res.data)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  })
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{padding: '5px', width: '100%'}} aria-label="a data table">
@@ -14,43 +39,16 @@ export default function TableComponent(props: any) {
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow>
-            <TableCell>1984</TableCell>
-            <TableCell align='center'>The War Among Us</TableCell>
-            <TableCell align='center'>George Orwell</TableCell>
-            <TableCell align='right'>5</TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>1984</TableCell>
-            <TableCell align='center'>The War Among Us</TableCell>
-            <TableCell align='center'>George Orwell</TableCell>
-            <TableCell align='right'>5</TableCell>
-          </TableRow>          <TableRow>
-            <TableCell>1984</TableCell>
-            <TableCell align='center'>The War Among Us</TableCell>
-            <TableCell align='center'>George Orwell</TableCell>
-            <TableCell align='right'>5</TableCell>
-          </TableRow>          <TableRow>
-            <TableCell>1984</TableCell>
-            <TableCell align='center'>The War Among Us</TableCell>
-            <TableCell align='center'>George Orwell</TableCell>
-            <TableCell align='right'>5</TableCell>
-          </TableRow>          <TableRow>
-            <TableCell>1984</TableCell>
-            <TableCell align='center'>The War Among Us</TableCell>
-            <TableCell align='center'>George Orwell</TableCell>
-            <TableCell align='right'>5</TableCell>
-          </TableRow>          <TableRow>
-            <TableCell>1984</TableCell>
-            <TableCell align='center'>The War Among Us</TableCell>
-            <TableCell align='center'>George Orwell</TableCell>
-            <TableCell align='right'>5</TableCell>
-          </TableRow>          <TableRow>
-            <TableCell>1984</TableCell>
-            <TableCell align='center'>The War Among Us</TableCell>
-            <TableCell align='center'>George Orwell</TableCell>
-            <TableCell align='right'>5</TableCell>
-          </TableRow>
+          {
+            booksData.map(book => 
+              <TableRow>
+                <TableCell>{book.title}</TableCell>
+                <TableCell align='center'>{book.subtitle}</TableCell>
+                <TableCell align='center'>{book.author}</TableCell>
+                <TableCell align='right'>{book.quantity}</TableCell>
+              </TableRow>
+            )
+          }
         </TableBody>
       </Table>  
     </TableContainer>
