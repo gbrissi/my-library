@@ -16,5 +16,5 @@ exports.up = function(knex) {
 
 
 exports.down = function(knex) {
-  return knex.dropTableIfExists('loan_and_return')
+  return knex.schema.dropTableIfExists('loan_and_return')
 };
