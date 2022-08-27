@@ -43,12 +43,12 @@ exports.seed = async function(knex) {
     {
       user_id: 1,
       book_id: 1,
-      return_date: Date.parse('01 September 2022 00:00:00 GMT')
+      return_date: '29-09-2022'
     },
     {
       user_id: 2,
       book_id: 2,
-      return_date: Date.parse('03 September 2022 00:00:00 GMT')
+      return_date: '30-09-2022'
     }
   ])
 };
