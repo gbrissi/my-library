@@ -3,17 +3,21 @@ process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
 const express = require('express')
 const app = express()
 const bcrypt = require('bcrypt')
+
 const User = require('./db/models/User')
+const Book = require('./db/models/Book');
+const LoanReturn = require('./db/models/LoanReturn');
+
 const setupDb = require('./db/_database')
 
 const cors = require('cors');
-const { reset } = require('nodemon');
 
 setupDb();
 
 const corsOption = {
     origin: ['http://localhost:3000'],
 };
+
 //if you want in every domain then
 app.use(express.json())
 app.use(cors(corsOption));
@@ -22,16 +26,21 @@ const port = process.env.PORT || 8080;
 
 async function main() {
     
-   //SELECT * FROM users
+   const loansReturns = await LoanReturn.query();
+   const books = await Book.query();
    const users = await User.query();
 
    //API
    app.get('/', (req, res) => {
-        res.status(200).send(users)
+        try {
+            res.status(200).send(users)
+        } catch (error) {
+            res.send(error)
+        }
    })
 
     app.post('/users/login', async (req, res) => {
-        const siteUser = users.find(users => users.username = req.body.username)
+        const siteUser = users.find(userFind => userFind.username === req.body.username)
         if (siteUser == null) {
             return res.status(200).send('Cannot find user')
         } else {
@@ -50,6 +59,30 @@ async function main() {
             }
         }
 
+    })
+
+    app.get('/books', async (req, res) => {
+        try {
+            res.send(books)
+        } catch (error) {
+            res.send(error)
+        }
+    })
+
+    app.post('/books/register', async (req, res) => {
+        try {
+            books.insert({
+                title: req.body.title,
+                subtitle: req.body.subtitle,
+                author: req.body.author,
+                publishing_company: req.body.publishingCompany,
+                quantity: req.body.quantity,
+                isbn: req.body.isbn,
+                book_image: 01010101
+            })
+        } catch (error) {
+            res.send(error)
+        }
     })
 
 }

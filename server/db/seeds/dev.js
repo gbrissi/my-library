@@ -25,6 +25,7 @@ exports.seed = async function(knex) {
       author: 'author1',
       publishing_company: 'pc1',
       quantity: 2,
+      book_image: 01010101,
       isbn: '9780439023481',
     },
     {
@@ -34,6 +35,7 @@ exports.seed = async function(knex) {
       author: 'author2',
       publishing_company: 'pc2',
       quantity: 3,
+      book_image: 01010101,
       isbn: '9780439023482',
     }
   ])

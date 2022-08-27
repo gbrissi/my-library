@@ -7,6 +7,7 @@ exports.up = function(knex) {
         table.string('publishing_company').notNullable();
         table.integer('quantity').notNullable();
         table.string('isbn').notNullable().unique();
+        table.binary('book_image').notNullable()
         table.timestamps(true, true);
     })
 };
