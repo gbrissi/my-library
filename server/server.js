@@ -90,6 +90,16 @@ async function main() {
         }
     })
 
+    app.post('/books/delete', async(req, res) => {
+        try {
+            await Book.query().deleteById(req.body.bookId)
+            .then(res.status(200).send('Book deleted with success!'));
+        } catch (error) {
+            console.log('Erro aqui: ', error)
+            res.send(error)
+        }
+    })
+
 }
 
 main()
