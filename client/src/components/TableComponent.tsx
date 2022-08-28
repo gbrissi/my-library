@@ -43,7 +43,7 @@ export default function TableComponent() {
         <TableBody>
           {
             booksData.map(book => 
-              <TableRow>
+              <TableRow key={book.isbn}>
                 <TableCell align='left'>{book.isbn}</TableCell>
                 <TableCell align='center'>{book.title}</TableCell>
                 <TableCell align='center'>{book.subtitle}</TableCell>

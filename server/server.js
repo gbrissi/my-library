@@ -62,8 +62,9 @@ async function main() {
     })
 
     app.get('/books', async (req, res) => {
+        const bookData = await Book.query()
         try {
-            res.send(books)
+            res.send(bookData)
         } catch (error) {
             res.send(error)
         }
@@ -71,18 +72,20 @@ async function main() {
 
     app.post('/books/register', async (req, res) => {
         try {
-            books.insert({
+            await Book.query().insert({
                 title: req.body.title,
                 subtitle: req.body.subtitle,
                 author: req.body.author,
                 publishing_company: req.body.publishing_company,
-                quantity: req.body.quantity,
+                quantity: parseInt(req.body.quantity),
                 isbn: req.body.isbn,
                 book_image: 01010101
             }).then(() => {
+                console.log('Sent!  ')
                 res.status(200).send('Inserção efetuada com sucesso!')
             })
         } catch (error) {
+            console.log('Erro aqui:', error)
             res.send(error)
         }
     })

@@ -5,13 +5,11 @@ exports.seed = async function(knex) {
   await knex.raw('TRUNCATE TABLE "user" CASCADE')
   await knex('user').insert([
     {
-      id: 1, 
       username: 'KellyG',
       password: await bcrypt.hash('tomatoes', 10),
       role: 'admin'
     },
     {
-      id: 2,
       username: 'user',
       password: await bcrypt.hash('user1', 10),
       role: 'user'
@@ -19,7 +17,6 @@ exports.seed = async function(knex) {
   ]);
   await knex('book').insert([
     {
-      id: 1,
       title: 'title1',
       subtitle: 'subtitle1',
       author: 'author1',
@@ -29,7 +26,6 @@ exports.seed = async function(knex) {
       isbn: '9780439023481',
     },
     {
-      id: 2,
       title: 'title2',
       subtitle: 'subtitle2',
       author: 'author2',

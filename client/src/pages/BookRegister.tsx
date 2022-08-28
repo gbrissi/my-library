@@ -12,12 +12,8 @@ import axios from 'axios';
 export default function BookRegister() {
 
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <>
@@ -36,9 +32,10 @@ export default function BookRegister() {
             }}
             open={open}
             onClose={handleClose}
-          >
-            <RegisterBook/>
-          </Modal>
+            children={<RegisterBook/>}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          />
           <TableComponent/>
           <Tooltip title='Add new book'>
             <CustomIconButton onClick={handleOpen} size='large'>

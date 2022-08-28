@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {Button, FormControl, InputLabel, styled, Input, Typography, FormHelperText, TextField, Icon, IconButton, Fade} from '@mui/material'
+import {Button, FormControl, InputLabel, styled, Input, Icon,  Fade} from '@mui/material'
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import axios from 'axios'
 
@@ -27,8 +27,6 @@ import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 
 export default function RegisterBook() {
 
-
-
     async function createBook() {
 
         const isbn = document.getElementById('isbn') as HTMLFormElement
@@ -41,7 +39,7 @@ export default function RegisterBook() {
         const bookRegisterObject = JSON.stringify({'title': title.value, 'subtitle': subtitle.value, 'author': author.value, 'publishing_company': publishingCompany.value, 'quantity': quantity.value, 'isbn': isbn.value}) 
         console.log(bookRegisterObject)
         const options = {
-            url: 'https://library-online-webproject.herokuapp.com/books/register' || 'http://localhost:8080/books/register',
+            url: 'https://library-online-webproject.herokuapp.com/books/register' ||'http://localhost:8080/books/register',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',
@@ -53,8 +51,9 @@ export default function RegisterBook() {
         };
 
         await axios(options).then(res => {
-            console.log(res.status)
+            console.log(res.data)
         })
+
     }
 
     return (
