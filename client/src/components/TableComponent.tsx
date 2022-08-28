@@ -33,8 +33,8 @@ export default function TableComponent() {
       <Table sx={{padding: '5px', width: '100%'}} aria-label="a data table">
         <TableHead>
           <TableRow>
-            <TableCell align='center'>ISBN</TableCell>
-            <TableCell align='left'>Title</TableCell>
+            <TableCell align='left'>ISBN</TableCell>
+            <TableCell align='center'>Title</TableCell>
             <TableCell align='center'>Subtitle</TableCell>
             <TableCell align='center'>Author</TableCell>
             <TableCell align='right'>Quantity</TableCell>

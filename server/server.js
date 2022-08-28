@@ -75,10 +75,12 @@ async function main() {
                 title: req.body.title,
                 subtitle: req.body.subtitle,
                 author: req.body.author,
-                publishing_company: req.body.publishingCompany,
+                publishing_company: req.body.publishing_company,
                 quantity: req.body.quantity,
                 isbn: req.body.isbn,
                 book_image: 01010101
+            }).then(() => {
+                res.status(200).send('Inserção efetuada com sucesso!')
             })
         } catch (error) {
             res.send(error)
