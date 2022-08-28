@@ -10,8 +10,7 @@ export default function TableComponent() {
   const [booksData, setBooksData] = useState<any[]>([])
 
   const options = {
-    /*'https://library-online-webproject.herokuapp.com/books' ||  */
-    url: 'http://localhost:8080/books',
+    url: 'https://library-online-webproject.herokuapp.com/books' || 'http://localhost:8080/books',
     method: 'GET',
     headers: {
         'Content-Type': 'application/json;charset=UTF-8',
@@ -33,8 +32,7 @@ export default function TableComponent() {
   async function delBook(bookId: any){
     const bookIdInfo = JSON.stringify({'bookId': bookId})
     const options = {
-      /* 'https://library-online-webproject.herokuapp.com/books/delete' ||  */
-      url: 'http://localhost:8080/books/delete',
+      url: 'https://library-online-webproject.herokuapp.com/books/delete' || 'http://localhost:8080/books/delete',
       method: 'POST',
       headers: {
           'Content-Type': 'application/json;charset=UTF-8',
@@ -52,8 +50,8 @@ export default function TableComponent() {
     })
   }
 
-  function editBook(bookId: any) {
-
+  async function editBook(bookId: any) {
+    
   }
 
   return (

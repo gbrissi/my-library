@@ -7,7 +7,6 @@ import RegisterBook from '../components/RegisterBook';
 import TableComponent from '../components/TableComponent'
 import SearchField from '../components/SearchField'
 import Header from '../components/Header';
-import axios from 'axios';
 
 export default function BookRegister() {
 
@@ -32,7 +31,7 @@ export default function BookRegister() {
             }}
             open={open}
             onClose={handleClose}
-            children={<RegisterBook/>}
+            children={<RegisterBook submit='create'/>}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           />

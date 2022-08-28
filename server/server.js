@@ -81,11 +81,11 @@ async function main() {
                 isbn: req.body.isbn,
                 book_image: 01010101
             }).then(() => {
-                console.log('Sent!  ')
-                res.status(200).send('Inserção efetuada com sucesso!')
+                console.log('Created')
+                res.status(200).send('Book created with success!')
             })
         } catch (error) {
-            console.log('Erro aqui:', error)
+            console.log('Here is the error:', error)
             res.send(error)
         }
     })
@@ -96,6 +96,26 @@ async function main() {
             .then(res.status(200).send('Book deleted with success!'));
         } catch (error) {
             console.log('Erro aqui: ', error)
+            res.send(error)
+        }
+    })
+
+    app.post('/books/edit', async (req, res) => {
+        try {
+            await Book.query().patchAndFetchById(req.body.bookId, {
+                title: req.body.title,
+                subtitle: req.body.subtitle,
+                author: req.body.author,
+                publishing_company: req.body.publishing_company,
+                quantity: parseInt(req.body.quantity),
+                isbn: req.body.isbn,
+                book_image: 01010101
+            }).then(() => {
+                console.log('Updated')
+                res.status(200).send('Book updated with success!')
+            })
+        } catch (error) {
+            console.log('Here is the error:', error)
             res.send(error)
         }
     })

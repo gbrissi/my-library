@@ -25,7 +25,7 @@ import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 </LocalizationProvider>
 */
 
-export default function RegisterBook() {
+export default function RegisterBook(props: any) {
 
     async function createBook() {
 
@@ -37,7 +37,7 @@ export default function RegisterBook() {
         const quantity = document.getElementById('quantity') as HTMLFormElement
 
         const bookRegisterObject = JSON.stringify({'title': title.value, 'subtitle': subtitle.value, 'author': author.value, 'publishing_company': publishingCompany.value, 'quantity': quantity.value, 'isbn': isbn.value}) 
-        console.log(bookRegisterObject)
+        
         const options = {
             url: 'https://library-online-webproject.herokuapp.com/books/register' ||'http://localhost:8080/books/register',
             method: 'POST',
@@ -53,6 +53,49 @@ export default function RegisterBook() {
         await axios(options).then(res => {
             console.log(res.data)
         })
+
+        isbn.value = null;
+        title.value = ''
+        subtitle.value = ''
+        author.value = ''
+        publishingCompany.value = ''
+        quantity.value = null;
+
+    }
+
+    async function editBook(bookId: any) {
+        
+        const isbn = document.getElementById('isbn') as HTMLFormElement
+        const title = document.getElementById('title') as HTMLFormElement
+        const subtitle = document.getElementById('subtitle') as HTMLFormElement
+        const author = document.getElementById('author') as HTMLFormElement
+        const publishingCompany = document.getElementById('publishing-company') as HTMLFormElement
+        const quantity = document.getElementById('quantity') as HTMLFormElement
+
+        const bookRegisterObject = JSON.stringify({'bookId': bookId, 'title': title.value, 'subtitle': subtitle.value, 'author': author.value, 'publishing_company': publishingCompany.value, 'quantity': quantity.value, 'isbn': isbn.value}) 
+        
+        const options = {
+            url: 'https://library-online-webproject.herokuapp.com/books/edit' ||'http://localhost:8080/books/edit',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+                "Access-Control-Allow-Origin": "*",
+                'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers': '*'
+            },
+            data: bookRegisterObject
+        };
+
+        await axios(options).then(res => {
+            console.log(res.data)
+        })
+
+        isbn.value = null;
+        title.value = ''
+        subtitle.value = ''
+        author.value = ''
+        publishingCompany.value = ''
+        quantity.value = null;
 
     }
 
@@ -90,8 +133,17 @@ export default function RegisterBook() {
                             <InputLabel>Quantity</InputLabel>
                             <Input required id='quantity' type='number' placeholder='5'/>
                         </FormControl>
-                        <CustomButton type="submit" onClick={() => {
-                            createBook()
+                        <CustomButton onClick={async () => {
+                            console.log(props.submit)
+                            if (props.submit == 'create') {
+                                createBook();
+                            }
+                            else if (props.submit == 'edit') {
+                                editBook(props.bookInfo);
+                            }
+                            else {
+                                console.log('No parameters')
+                            }
                         }}variant='contained'>Submit</CustomButton>
                     </Form>
                 </Container>
