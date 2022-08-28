@@ -3,9 +3,11 @@ import { useState } from 'react';
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios';
 
+
+import LockIcon from '@mui/icons-material/Lock';
 import {styled} from '@mui/material/styles'
 
-import {Button, InputLabel, OutlinedInput, InputAdornment, Fade} from '@mui/material'
+import {Button, InputLabel, OutlinedInput, InputAdornment, Fade, Icon, bottomNavigationActionClasses} from '@mui/material'
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
@@ -95,9 +97,11 @@ export default function Login() {
   return (
     <Fade in>
         <Form>
-            <Legend>
-                <h1 id='title'>Login</h1>
-            </Legend>
+            <Icon sx={{height: 'auto', display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', marginBottom: '15px'}}>
+                <div style={{backgroundColor: '#00655d', borderRadius: '50%', padding: '15px'}}>
+                    <LockIcon sx={{color: 'white', fontSize: '3rem'}}/>
+                </div>
+            </Icon>
             <FormContainer>
                 <InputContainer>
                     <InputErrorCode>
@@ -179,38 +183,21 @@ const Form = styled('form')`
     cursor: auto;
     position: absolute;
     z-index: 999;
-    background-color: whitesmoke;
     width: 450px;
     max-width: 100%;
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 `
 
 const FormContainer = styled('div')`
+    background-color: whitesmoke;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 25px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    padding: 35px;
+    border-radius: 15px;
 `
-
-const Legend = styled('legend')`
-    padding: 5px 15px 5px 15px;
-    background-color: #00655d;
-    width: 100%;
-
-    #title {
-        text-align: center;
-        font-weight: bolder;
-        font-family: 'Roboto', sans-serif;
-        line-height: 1.2rem;
-        letter-spacing: 1px;
-        font-size: 1.4rem;
-        color: white;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-`;
 
 const InputContainer = styled('div')`
     margin-bottom: 0px;
@@ -221,11 +208,11 @@ const InputContainer = styled('div')`
 `
 
 const SubmitButton = styled(Button)`
-    height: 60px;
+    height: 50px;
     padding: 8px;
     width: 100%;
     margin: 15px;
-    margin-top: 0;
+    margin-top: 25px;
     text-align: center;
     color: white;
     font-weight: bolder;
@@ -236,6 +223,6 @@ const SubmitButton = styled(Button)`
     cursor: pointer;
 
     :hover {
-        background-color: #004d46;
+        background-color: #007979;
     }
 `

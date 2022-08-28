@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios';
+
 import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper} from '@mui/material'
 
 export default function TableComponent() {
@@ -32,10 +33,10 @@ export default function TableComponent() {
       <Table sx={{padding: '5px', width: '100%'}} aria-label="a data table">
         <TableHead>
           <TableRow>
+            <TableCell align='center'>ISBN</TableCell>
             <TableCell align='left'>Title</TableCell>
             <TableCell align='center'>Subtitle</TableCell>
             <TableCell align='center'>Author</TableCell>
-            <TableCell align='center'>ISBN</TableCell>
             <TableCell align='right'>Quantity</TableCell>
           </TableRow>
         </TableHead>
@@ -43,10 +44,10 @@ export default function TableComponent() {
           {
             booksData.map(book => 
               <TableRow>
-                <TableCell>{book.title}</TableCell>
+                <TableCell align='left'>{book.isbn}</TableCell>
+                <TableCell align='center'>{book.title}</TableCell>
                 <TableCell align='center'>{book.subtitle}</TableCell>
                 <TableCell align='center'>{book.author}</TableCell>
-                <TableCell align='center'>{book.isbn}</TableCell>
                 <TableCell align='right'>{book.quantity}</TableCell>
               </TableRow>
             )
