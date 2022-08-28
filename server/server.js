@@ -102,7 +102,9 @@ async function main() {
 
     app.post('/books/edit', async (req, res) => {
         try {
-            await Book.query().patchAndFetchById(req.body.bookId, {
+            await Book.query()
+            .findById(req.body.bookId)
+            .patch({
                 title: req.body.title,
                 subtitle: req.body.subtitle,
                 author: req.body.author,
