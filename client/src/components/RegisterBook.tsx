@@ -63,6 +63,34 @@ export default function RegisterBook(props: any) {
 
     }
 
+    /*
+    async function getBookValue(bookId: any) {
+
+        const isbn = document.getElementById('isbn') as HTMLFormElement
+        const title = document.getElementById('title') as HTMLFormElement
+        const subtitle = document.getElementById('subtitle') as HTMLFormElement
+        const author = document.getElementById('author') as HTMLFormElement
+        const publishingCompany = document.getElementById('publishing-company') as HTMLFormElement
+        const quantity = document.getElementById('quantity') as HTMLFormElement
+    
+        const options = {
+            url: 'https://library-online-webproject.herokuapp.com/books/edit' ||'http://localhost:8080/books/edit',
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json;charset=UTF-8',
+                "Access-Control-Allow-Origin": "*",
+                'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS',
+                'Access-Control-Allow-Headers': '*'
+            }
+        };
+
+        await axios(options).then(res => {
+            console.log(res.data)
+        })
+    
+    }
+    */
+    
     async function editBook(bookId: any) {
         
         const isbn = document.getElementById('isbn') as HTMLFormElement
@@ -75,7 +103,7 @@ export default function RegisterBook(props: any) {
         const bookRegisterObject = JSON.stringify({'bookId': bookId, 'title': title.value, 'subtitle': subtitle.value, 'author': author.value, 'publishing_company': publishingCompany.value, 'quantity': quantity.value, 'isbn': isbn.value}) 
         
         const options = {
-            url: 'https://library-online-webproject.herokuapp.com/books/edit' ||'http://localhost:8080/books/edit',
+            url: 'https://library-online-webproject.herokuapp.com/books' ||'http://localhost:8080/books',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',

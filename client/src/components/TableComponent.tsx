@@ -79,10 +79,10 @@ export default function TableComponent() {
                 <TableCell align='center'>{book.subtitle}</TableCell>
                 <TableCell align='center'>{book.author}</TableCell>
                 <TableCell align='center'>{book.quantity}</TableCell>
-                <TableCell align='center'>
-                  <div>
-                    <EditIcon onClick={() => {handleOpen(), setBookValue(book.id)}} sx={{marginRight: '36px', cursor:'pointer', fontSize: '1.8rem', backgroundColor:'#DAA520', color:'white', borderRadius: '7px', "&:hover": {background: "#fcbf26", transform: "scale(1.1)"}}}/>
-                    <DeleteIcon onClick={() => {delBook(book.id)}} sx={{cursor:'pointer', backgroundColor: '#C70039', color:'white', fontSize: '1.8rem', borderRadius: '7px', "&:hover": {background: "#ff0048", transform: "scale(1.1)"}}}/></div></TableCell>
+                <TableCell align='center'><div>
+                    <EditIcon onClick={() => {handleOpen(), setBookValue(book.id)}} sx={{marginRight: '24px', cursor:'pointer', fontSize: '1.8rem', backgroundColor:'#DAA520', color:'white', borderRadius: '7px', "&:hover": {background: "#fcbf26", transform: "scale(1.1)"}}}/>
+                    <DeleteIcon onClick={() => {delBook(book.id)}} sx={{cursor:'pointer', backgroundColor: '#C70039', color:'white', fontSize: '1.8rem', borderRadius: '7px', "&:hover": {background: "#ff0048", transform: "scale(1.1)"}}}/>
+                </div></TableCell>
               </TableRow>
             )
           }
