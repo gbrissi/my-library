@@ -20,20 +20,6 @@ export default function Book(props: any) {
   )
 }
 
-const Genres = styled('div')`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-`
-
-const Genre = styled(Chip)`
-    background-color: red;
-    color: white;
-    padding: 0 10px;
-    margin-bottom: 0px;
-`
-
 const BookCard = styled(Card)`
     margin: 10px;
     height: 350px;
