@@ -91,7 +91,7 @@ export default function RegisterBook(props: any) {
     }
     */
     
-    async function editBook(bookId: any) {
+    async function editBook(bookContent: any) {
         
         const isbn = document.getElementById('isbn') as HTMLFormElement
         const title = document.getElementById('title') as HTMLFormElement
@@ -100,7 +100,7 @@ export default function RegisterBook(props: any) {
         const publishingCompany = document.getElementById('publishing-company') as HTMLFormElement
         const quantity = document.getElementById('quantity') as HTMLFormElement
 
-        const bookRegisterObject = JSON.stringify({'bookId': bookId, 'title': title.value, 'subtitle': subtitle.value, 'author': author.value, 'publishing_company': publishingCompany.value, 'quantity': quantity.value, 'isbn': isbn.value}) 
+        const bookRegisterObject = JSON.stringify({'bookId': bookContent.id, 'title': title.value, 'subtitle': subtitle.value, 'author': author.value, 'publishing_company': publishingCompany.value, 'quantity': quantity.value, 'isbn': isbn.value}) 
         
         const options = {
             url: 'https://library-online-webproject.herokuapp.com/books' ||'http://localhost:8080/books',
