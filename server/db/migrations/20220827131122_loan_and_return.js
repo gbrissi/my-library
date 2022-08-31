@@ -4,11 +4,13 @@ exports.up = function(knex) {
         table.integer('user_id')
             .references('id')
             .inTable('user')
-            .index();
+            .index()
+            .onDelete('CASCADE');
         table.integer('book_id')
             .references('id')
             .inTable('book')
-            .index();
+            .index()
+            .onDelete('CASCADE');
         table.timestamp('return_date').notNullable();
         table.timestamps(true, true);
     })
