@@ -15,18 +15,18 @@ export default function TableComponent() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const options = {
-    url: 'https://library-online-webproject.herokuapp.com/books' || 'http://localhost:8080/books',
-    method: 'GET',
-    headers: {
-        'Content-Type': 'application/json;charset=UTF-8',
-        "Access-Control-Allow-Origin": "*",
-        'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS',
-        'Access-Control-Allow-Headers': '*'
-    },
-  };
-
   useEffect(() => {
+    const options = {
+      url: 'https://library-online-webproject.herokuapp.com/books' || 'http://localhost:8080/books',
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json;charset=UTF-8',
+          "Access-Control-Allow-Origin": "*",
+          'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS',
+          'Access-Control-Allow-Headers': '*'
+      },
+    };
+
     axios(options).then(res => {
       setBooksData(res.data)
     })
