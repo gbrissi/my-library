@@ -62,37 +62,11 @@ export default function RegisterBook(props: any) {
         quantity.value = null;
 
     }
-
-    /*
-    async function getBookValue(bookId: any) {
-
-        const isbn = document.getElementById('isbn') as HTMLFormElement
-        const title = document.getElementById('title') as HTMLFormElement
-        const subtitle = document.getElementById('subtitle') as HTMLFormElement
-        const author = document.getElementById('author') as HTMLFormElement
-        const publishingCompany = document.getElementById('publishing-company') as HTMLFormElement
-        const quantity = document.getElementById('quantity') as HTMLFormElement
-    
-        const options = {
-            url: 'https://library-online-webproject.herokuapp.com/books/edit' ||'http://localhost:8080/books/edit',
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json;charset=UTF-8',
-                "Access-Control-Allow-Origin": "*",
-                'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS',
-                'Access-Control-Allow-Headers': '*'
-            }
-        };
-
-        await axios(options).then(res => {
-            console.log(res.data)
-        })
-    
-    }
-    */
     
     async function editBook(bookContent: any) {
         
+        console.log(bookContent)
+
         const isbn = document.getElementById('isbn') as HTMLFormElement
         const title = document.getElementById('title') as HTMLFormElement
         const subtitle = document.getElementById('subtitle') as HTMLFormElement
@@ -101,9 +75,10 @@ export default function RegisterBook(props: any) {
         const quantity = document.getElementById('quantity') as HTMLFormElement
 
         const bookRegisterObject = JSON.stringify({'bookId': bookContent.id, 'title': title.value, 'subtitle': subtitle.value, 'author': author.value, 'publishing_company': publishingCompany.value, 'quantity': quantity.value, 'isbn': isbn.value}) 
-        
+        console.log('Bookregisetrobject: ', bookRegisterObject)
+
         const options = {
-            url: 'https://library-online-webproject.herokuapp.com/books' ||'http://localhost:8080/books',
+            url: 'https://library-online-webproject.herokuapp.com/books/edit' ||'http://localhost:8080/books/edit',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',
@@ -126,6 +101,22 @@ export default function RegisterBook(props: any) {
         quantity.value = null;
 
     }
+
+    useEffect(() => {
+        const isbn = document.getElementById('isbn') as HTMLFormElement
+        const title = document.getElementById('title') as HTMLFormElement
+        const subtitle = document.getElementById('subtitle') as HTMLFormElement
+        const author = document.getElementById('author') as HTMLFormElement
+        const publishingCompany = document.getElementById('publishing-company') as HTMLFormElement
+        const quantity = document.getElementById('quantity') as HTMLFormElement
+
+        isbn.value = parseInt(props.bookInfo.id)
+        title.value = props.bookInfo.title
+        subtitle.value = props.bookInfo.subtitle
+        author.value = props.bookInfo.author
+        publishingCompany.value = props.bookInfo.publishing_company
+        quantity.value = parseInt(props.bookInfo.quantity)
+    }, [])
 
     return (
         <Fade in timeout={300}>
@@ -167,7 +158,7 @@ export default function RegisterBook(props: any) {
                                 createBook();
                             }
                             else if (props.submit == 'edit') {
-                                editBook(props.bookInfo);
+                                editBook(props.bookInfo)
                             }
                             else {
                                 console.log('No parameters')

@@ -9,7 +9,7 @@ import RegisterBook from './RegisterBook';
 export default function TableComponent() {
 
   const [booksData, setBooksData] = useState<any[]>([])
-  const [bookValue, setBookValue] = useState<any[]>([])
+  const [bookValue, setBookValue] = useState({})
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -80,25 +80,27 @@ export default function TableComponent() {
                 <TableCell align='center'>{book.author}</TableCell>
                 <TableCell align='center'>{book.quantity}</TableCell>
                 <TableCell align='center'><div>
-                    <EditIcon onClick={() => {handleOpen(), setBookValue(book)}} sx={{marginRight: '24px', cursor:'pointer', fontSize: '1.8rem', backgroundColor:'#DAA520', color:'white', borderRadius: '7px', "&:hover": {background: "#fcbf26", transform: "scale(1.1)"}}}/>
+                    <EditIcon onClick={() => {setBookValue(book), console.log(bookValue), handleOpen()}} sx={{marginRight: '24px', cursor:'pointer', fontSize: '1.8rem', backgroundColor:'#DAA520', color:'white', borderRadius: '7px', "&:hover": {background: "#fcbf26", transform: "scale(1.1)"}}}/>
                     <DeleteIcon onClick={() => {delBook(book.id)}} sx={{cursor:'pointer', backgroundColor: '#C70039', color:'white', fontSize: '1.8rem', borderRadius: '7px', "&:hover": {background: "#ff0048", transform: "scale(1.1)"}}}/>
                 </div></TableCell>
               </TableRow>
             )
           }
-          <Modal
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center'
-            }}
-            open={open}
-            onClose={handleClose}
-            children={<RegisterBook bookInfo={bookValue} submit='edit'/>}
-            aria-labelledby="modal-register-book"
-          />
+          { bookValue &&
+              <Modal
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
+              open={open}
+              onClose={handleClose}
+              children={<RegisterBook bookInfo={bookValue} submit='edit'/>}
+              aria-labelledby="modal-register-book"
+            />
+          }
         </TableBody>
-      </Table>  
+      </Table>
     </TableContainer>
   )
 }
