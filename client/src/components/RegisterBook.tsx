@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {Button, FormControl, InputLabel, styled, Input, Icon,  Fade} from '@mui/material'
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import axios from 'axios'
+import AlertMessage from './AlertMessage';
 
 
 /* DATE INPUT
@@ -26,6 +27,7 @@ import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 */
 
 export default function RegisterBook(props: any) {
+    const [showComp, setShowComp] = useState('')
 
     async function createBook() {
 
@@ -51,7 +53,11 @@ export default function RegisterBook(props: any) {
         };
 
         await axios(options).then(res => {
-            console.log(res.data)
+            if(res.data == 'Book created with success!') {
+                setShowComp('updated')
+            } else {
+                setShowComp('error')
+            }
         })
 
         isbn.value = null;
@@ -90,32 +96,38 @@ export default function RegisterBook(props: any) {
         };
 
         await axios(options).then(res => {
-            console.log(res.data)
+            if(res.data = 'Book updated with success!') {
+                setShowComp('updated')
+            } else {
+                setShowComp('error')
+            }
         })
+    }
 
-        isbn.value = null;
-        title.value = ''
-        subtitle.value = ''
-        author.value = ''
-        publishingCompany.value = ''
-        quantity.value = null;
-
+    function changeShowState() {
+        if(showComp == 'updated' || 'error') {
+            setTimeout(() => {
+                setShowComp('')
+            }, 3000)
+        }
     }
 
     useEffect(() => {
-        const isbn = document.getElementById('isbn') as HTMLFormElement
-        const title = document.getElementById('title') as HTMLFormElement
-        const subtitle = document.getElementById('subtitle') as HTMLFormElement
-        const author = document.getElementById('author') as HTMLFormElement
-        const publishingCompany = document.getElementById('publishing-company') as HTMLFormElement
-        const quantity = document.getElementById('quantity') as HTMLFormElement
+        if(props.bookInfo) {
+            const isbn = document.getElementById('isbn') as HTMLFormElement
+            const title = document.getElementById('title') as HTMLFormElement
+            const subtitle = document.getElementById('subtitle') as HTMLFormElement
+            const author = document.getElementById('author') as HTMLFormElement
+            const publishingCompany = document.getElementById('publishing-company') as HTMLFormElement
+            const quantity = document.getElementById('quantity') as HTMLFormElement
 
-        isbn.value = parseInt(props.bookInfo.id)
-        title.value = props.bookInfo.title
-        subtitle.value = props.bookInfo.subtitle
-        author.value = props.bookInfo.author
-        publishingCompany.value = props.bookInfo.publishing_company
-        quantity.value = parseInt(props.bookInfo.quantity)
+            isbn.value = parseInt(props.bookInfo.id)
+            title.value = props.bookInfo.title
+            subtitle.value = props.bookInfo.subtitle
+            author.value = props.bookInfo.author
+            publishingCompany.value = props.bookInfo.publishing_company
+            quantity.value = parseInt(props.bookInfo.quantity)
+        }
     }, [])
 
     return (
@@ -153,7 +165,6 @@ export default function RegisterBook(props: any) {
                             <Input required id='quantity' type='number' placeholder='5'/>
                         </FormControl>
                         <CustomButton onClick={async () => {
-                            console.log(props.submit)
                             if (props.submit == 'create') {
                                 createBook();
                             }
@@ -162,9 +173,15 @@ export default function RegisterBook(props: any) {
                             }
                             else {
                                 console.log('No parameters')
-                            }
-                        }}variant='contained'>Submit</CustomButton>
+                            };
+                            changeShowState();
+                        }} variant='contained'>Submit</CustomButton>
                     </Form>
+                    {showComp == 'updated' && 
+                    <AlertMessage message='Dados atualizados!' severity='success'/>
+                    } {showComp == 'error' && 
+                    <AlertMessage message='Dados atualizados!' severity='error'/>
+                    }
                 </Container>
             </Wrapper>
         </Fade>
