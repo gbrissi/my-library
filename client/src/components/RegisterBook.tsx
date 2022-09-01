@@ -180,7 +180,7 @@ export default function RegisterBook(props: any) {
                     {showComp == 'updated' && 
                     <AlertMessage message='Dados atualizados!' severity='success'/>
                     } {showComp == 'error' && 
-                    <AlertMessage message='Dados atualizados!' severity='error'/>
+                    <AlertMessage message='Houve um erro na inserção dos dados!' severity='error'/>
                     }
                 </Container>
             </Wrapper>
