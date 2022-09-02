@@ -10,9 +10,11 @@ import Header from '../components/Header';
 
 export default function BookRegister() {
 
+  const [searchTerm, setSearchTerm] = useState('')
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
 
   return (
     <>
@@ -20,7 +22,7 @@ export default function BookRegister() {
       <Fade in timeout={300}>
         <Container sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
           <div style={{marginTop: '8rem', width:'100%', }}>
-            <SearchField label='Filter the books' placeholder='The Lord of the Rings: The Return of the King'/>
+            <SearchField setSearchTerm={setSearchTerm} label='Filter the books' placeholder='The Lord of the Rings: The Return of the King'/>
           </div>
           <CustomButton onClick={handleOpen} variant='contained'>Add new book +</CustomButton>
           <Modal
@@ -35,7 +37,7 @@ export default function BookRegister() {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           />
-          <TableComponent/>
+          <TableComponent searchTerm={searchTerm}/>
           <Tooltip title='Add new book'>
             <CustomIconButton onClick={handleOpen} size='large'>
               <AddIcon/>

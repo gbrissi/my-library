@@ -6,8 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import RegisterBook from './RegisterBook';
 
-export default function TableComponent() {
-
+export default function TableComponent(props: any) {
   const [booksData, setBooksData] = useState<any[]>([])
   const [bookValue, setBookValue] = useState({})
 
@@ -28,8 +27,12 @@ export default function TableComponent() {
     };
 
     axios(options).then(res => {
-      setBooksData(res.data)
+      const books = res.data
+      const filteredBooks = books.filter((book: any) => book.title.startsWith(props.searchTerm))
+      setBooksData(filteredBooks)
+      //setBooksData(res.data)
     })
+
     .catch(err => {
       console.log(err)
     })
@@ -67,7 +70,6 @@ export default function TableComponent() {
             <TableCell align='center'>Author</TableCell>
             <TableCell align='center'>Quantity</TableCell>
             <TableCell align='right'></TableCell>
-
           </TableRow>
         </TableHead>
         <TableBody>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import {styled} from '@mui/material/styles';
 
@@ -8,10 +8,11 @@ import SearchIcon from '@mui/icons-material/Search';
 
 
 export default function SearchField(props: any) {
+
   return (
     <SearchContainer>
         <BarLabel>{props.label}</BarLabel>
-        <InputBar placeholder={props.placeholder} id="outlined-input" endAdornment={
+        <InputBar onChange={event => {props.setSearchTerm(event.target.value)}} placeholder={props.placeholder} id="outlined-input" endAdornment={
             <InputAdornment position='end'>
                 <SearchIcon/>
             </InputAdornment>
