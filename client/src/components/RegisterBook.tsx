@@ -142,7 +142,7 @@ export default function RegisterBook(props: any) {
                     <Form>
                         <FormControl sx={{width: '100%', marginBottom: '25px'}}>
                             <InputLabel>ISBN-10 (only numbers)</InputLabel>
-                            <ISBNInput required id='isbn' type='number' placeholder='9780439023481'/>
+                            <ISBNInput required id='isbn' type='number' inputProps={{maxLength: 10}} placeholder='9780439023481'/>
                         </FormControl>
                         <FormControl sx={{width: '100%', marginBottom: '25px'}}>
                             <InputLabel>Title</InputLabel>
@@ -162,7 +162,7 @@ export default function RegisterBook(props: any) {
                         </FormControl>
                         <FormControl sx={{width: '100%', marginBottom: '25px'}}>
                             <InputLabel>Quantity</InputLabel>
-                            <Input required id='quantity' type='number' placeholder='5'/>
+                            <Input required id='quantity' type='number' inputProps={{maxLength: 9999}} placeholder='5'/>
                         </FormControl>
                         <CustomButton onClick={async () => {
                             if (props.submit == 'create') {
