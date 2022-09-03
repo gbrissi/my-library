@@ -1,12 +1,38 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Book from './Book';
 
 import bookImg from '../assets/images/1984-book.jpg'
 
-import {styled} from '@mui/material/styles';
 import { Grid } from '@mui/material';
+import axios from 'axios';
 
-export default function Library() {
+export default function Library(props: any) {
+  const [booksData, setBooksData] = useState<any[]>([])
+
+  useEffect(() => {
+    const options = {
+      url: 'https://library-online-webproject.herokuapp.com/books' || 'http://localhost:8080/books',
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json;charset=UTF-8',
+          "Access-Control-Allow-Origin": "*",
+          'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS',
+          'Access-Control-Allow-Headers': '*'
+      },
+    };
+
+    axios(options).then(res => {
+      const books = res.data
+      const lowerSearchTerm = props.searchTerm.toLowerCase()
+      const filteredBooks = books.filter((book: any) => book.title.toLowerCase().includes(lowerSearchTerm))
+      setBooksData(filteredBooks)
+    })
+
+    .catch(err => {
+      console.log(err)
+    })
+  })
+
   return (
     <Grid container sx={{
       padding: '10px',
@@ -43,78 +69,16 @@ export default function Library() {
         height: '260px'
       }
       }}>
-      <Grid item xs={12} sm={6} md={4} lg={3}>
-        <Book 
-          image={bookImg}
-          title='1984' 
-          subtitle='The War Among Us' 
-          author='George Orwell'
-          genre='Fantasy'
-         />
-      </Grid>
-      <Grid item xs={12} sm={6} md={4} lg={3}>
-         <Book 
-          image={bookImg}
-          title='1984' 
-          subtitle='The War Among Us' 
-          author='George Orwell'
-          genre='Fantasy'
-         />
-      </Grid>      
-      <Grid item xs={12} sm={6} md={4} lg={3}>
-         <Book 
-          image={bookImg}
-          title='1984' 
-          subtitle='The War Among Us' 
-          author='George Orwell'
-          genre='Fantasy'
-         />
-      </Grid>
-      <Grid item xs={12} sm={6} md={4} lg={3}>
-         <Book 
-          image={bookImg}
-          title='1984' 
-          subtitle='The War Among Us' 
-          author='George Orwell'
-          genre='Fantasy'
-         />
-      </Grid>
-      <Grid item xs={12} sm={6} md={4} lg={3}>
-         <Book 
-          image={bookImg}
-          title='1984' 
-          subtitle='The War Among Us' 
-          author='George Orwell'
-          genre='Fantasy'
-         />
-      </Grid>
-      <Grid item xs={12} sm={6} md={4} lg={3}>
-         <Book 
-          image={bookImg}
-          title='1984' 
-          subtitle='The War Among Us' 
-          author='George Orwell'
-          genre='Fantasy'
-         />
-      </Grid>
-      <Grid item xs={12} sm={6} md={4} lg={3}>
-         <Book 
-          image={bookImg}
-          title='1984' 
-          subtitle='The War Among Us' 
-          author='George Orwell'
-          genre='Fantasy'
-         />
-      </Grid>
-      <Grid item xs={12} sm={6} md={4} lg={3}>
-         <Book 
-          image={bookImg}
-          title='1984' 
-          subtitle='The War Among Us' 
-          author='George Orwell'
-          genre='Fantasy'
-         />
-      </Grid>
+      { booksData.map(book => 
+        <Grid item xs={12} sm={6} md={4} lg={3}>
+          <Book 
+            image={bookImg}
+            title={book.title}
+            subtitle={book.subtitle}
+            author={book.author}
+            />
+        </Grid>
+      )}
     </Grid>
   )
 }
