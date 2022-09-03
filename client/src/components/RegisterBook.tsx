@@ -112,6 +112,11 @@ export default function RegisterBook(props: any) {
         }
     }
 
+    const maxLength = (eventValue: any, max: number) => {
+        const inputValue = eventValue.target as HTMLTextAreaElement
+        (inputValue).value = Math.max(0, parseInt((inputValue).value)).toString().slice(0, max)
+    }
+
     useEffect(() => {
         if(props.bookInfo) {
             const isbn = document.getElementById('isbn') as HTMLFormElement
@@ -120,8 +125,8 @@ export default function RegisterBook(props: any) {
             const author = document.getElementById('author') as HTMLFormElement
             const publishingCompany = document.getElementById('publishing-company') as HTMLFormElement
             const quantity = document.getElementById('quantity') as HTMLFormElement
-
-            isbn.value = parseInt(props.bookInfo.id)
+            
+            isbn.value = parseInt(props.bookInfo.isbn)
             title.value = props.bookInfo.title
             subtitle.value = props.bookInfo.subtitle
             author.value = props.bookInfo.author
@@ -141,7 +146,7 @@ export default function RegisterBook(props: any) {
                     <Form>
                         <FormControl sx={{width: '100%', marginBottom: '25px'}}>
                             <InputLabel>ISBN-10 (only numbers)</InputLabel>
-                            <ISBNInput required id='isbn' type='number' inputProps={{maxLength: 10}} placeholder='9780439023481'/>
+                            <ISBNInput required id='isbn' type='number' onInput={(event) => maxLength(event, 10)} placeholder='9780439023481'/>
                         </FormControl>
                         <FormControl sx={{width: '100%', marginBottom: '25px'}}>
                             <InputLabel>Title</InputLabel>
@@ -161,7 +166,7 @@ export default function RegisterBook(props: any) {
                         </FormControl>
                         <FormControl sx={{width: '100%', marginBottom: '25px'}}>
                             <InputLabel>Quantity</InputLabel>
-                            <Input required id='quantity' type='number' inputProps={{maxLength: 9999}} placeholder='5'/>
+                            <Input required id='quantity' type='number' onInput={(event) => maxLength(event, 4)} placeholder='5'/>
                         </FormControl>
                         <CustomButton onClick={async () => {
                             if (props.submit == 'create') {
