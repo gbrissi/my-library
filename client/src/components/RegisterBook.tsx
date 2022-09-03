@@ -126,8 +126,7 @@ export default function RegisterBook(props: any) {
             subtitle.value = props.bookInfo.subtitle
             author.value = props.bookInfo.author
             publishingCompany.value = props.bookInfo.publishing_company
-            quantity.value = parseInt(props.bookInfo.quantity)
-        }
+            quantity.value = parseInt(props.bookInfo.quantity)}
     }, [])
 
     return (
@@ -178,9 +177,9 @@ export default function RegisterBook(props: any) {
                         }} variant='contained'>Submit</CustomButton>
                     </Form>
                     {showComp == 'updated' && 
-                    <AlertMessage message='Dados atualizados!' severity='success'/>
+                    <AlertMessage message='Data has sucessfully been updated!' severity='success'/>
                     } {showComp == 'error' && 
-                    <AlertMessage message='Houve um erro na inserção dos dados!' severity='error'/>
+                    <AlertMessage message='A error has occured!' severity='error'/>
                     }
                 </Container>
             </Wrapper>
@@ -233,12 +232,3 @@ const Container = styled('div')`
         width: 100%;
     }
 `
-
-
-/*
-
-    const username = document.getElementById('user') as HTMLFormElement
-    const password = document.getElementById('password') as HTMLFormElement
-    const usernamePassword = JSON.stringify({'username': username.value, 'password': password.value}) 
-
-*/
