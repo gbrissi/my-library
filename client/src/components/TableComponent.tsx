@@ -28,9 +28,9 @@ export default function TableComponent(props: any) {
 
     axios(options).then(res => {
       const books = res.data
-      const filteredBooks = books.filter((book: any) => book.title.startsWith(props.searchTerm))
+      const lowerSearchTerm = props.searchTerm.toLowerCase()
+      const filteredBooks = books.filter((book: any) => book.title.toLowerCase().includes(lowerSearchTerm))
       setBooksData(filteredBooks)
-      //setBooksData(res.data)
     })
 
     .catch(err => {
