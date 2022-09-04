@@ -3,7 +3,7 @@ import Book from './Book';
 
 import bookImg from '../assets/images/1984-book.jpg'
 
-import { Grid } from '@mui/material';
+import { Grid, Skeleton, styled } from '@mui/material';
 import axios from 'axios';
 
 export default function Library(props: any) {
@@ -69,7 +69,7 @@ export default function Library(props: any) {
         height: '260px'
       }
       }}>
-      { booksData.map(book => 
+      { booksData.length > 0 ? (booksData.map(book => 
         <Grid item xs={12} sm={6} md={4} lg={3}>
           <Book 
             image={bookImg}
@@ -78,7 +78,19 @@ export default function Library(props: any) {
             author={book.author}
             />
         </Grid>
-      )
+      )) : <><Grid item xs={12} sm={6} md={4} lg={3}>
+          <Skeleton variant='rectangular' sx={{margin: '10px', height: '350px'}}/>
+      </Grid>
+      <Grid item xs={12} sm={6} md={4} lg={3}>
+          <Skeleton variant='rectangular' sx={{margin: '10px', height: '350px'}}/>
+      </Grid>
+      <Grid item xs={12} sm={6} md={4} lg={3}>
+          <Skeleton variant='rectangular' sx={{margin: '10px', height: '350px'}}/>
+      </Grid>
+      <Grid item xs={12} sm={6} md={4} lg={3}>
+          <Skeleton variant='rectangular' sx={{margin: '10px', height: '350px'}}/>
+      </Grid>
+      </>
     }
     </Grid>
   )
