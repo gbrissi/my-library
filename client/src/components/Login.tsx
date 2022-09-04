@@ -133,7 +133,7 @@ export default function Login(props: any) {
                     !isDisabled &&
                     <SubmitButton disabled={false} type='submit' onKeyDown={(e) => {
                         if(keyDown(e)) {
-                        async () => {setIsDisabled(handleClickLoad()), await setIsValid(await postData()), setIsDisabled(handleClickLoad()), setIsError(true)}
+                        async () => {isDisabled ? setIsDisabled(false) : setIsDisabled(true), await setIsValid(await postData()), setIsDisabled(handleClickLoad()), setIsError(true)}
                         }
                     }} onClick={async () => {setIsDisabled(handleClickLoad()), await setIsValid(await postData()), setIsDisabled(handleClickLoad()), setIsError(true)}} variant="contained">ENTER</SubmitButton>
                 }
