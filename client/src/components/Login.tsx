@@ -14,7 +14,6 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 var setDisable = false
-var visibility = false
 export default function Login(props: any) {
 
     const navigate = useNavigate()
@@ -23,15 +22,6 @@ export default function Login(props: any) {
     const [isDisabled, setIsDisabled] = useState(false);
     const [isValid, setIsValid] = useState(true);
     const [isVisible, setIsVisible] = useState(false);
-
-    function handleClickShowPassword(arg: boolean)  {
-        if(arg === false) {
-        visibility = true;
-        } else {
-        visibility = false;
-        }
-        return visibility;
-    }
 
     function handleClickLoad() {
         if(setDisable) {
@@ -124,10 +114,10 @@ export default function Login(props: any) {
                 </InputContainer>
                 <InputContainer>
                     <InputLabel>Password</InputLabel>
-                    <CustomOutlinedInput required={true} error={isError} id='password' type={visibility ? 'text' : 'password'} endAdornment={
+                    <CustomOutlinedInput required={true} error={isError} id='password' type={isVisible ? 'text' : 'password'} endAdornment={
                         <InputAdornment position='end'>
                             <IconButton edge='end' onClick={() => {
-                                setIsVisible(handleClickShowPassword(visibility))
+                                isVisible ? setIsVisible(false) : setIsVisible(true)
                             }}>
                                 { isVisible &&
                                     <Visibility/>
