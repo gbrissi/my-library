@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {styled} from '@mui/material/styles'
+
 import {Container, Button, IconButton, Fade, Tooltip, Modal} from '@mui/material'
 import AddIcon from '@mui/icons-material/Add';
 import RegisterBook from '../components/RegisterBook';
@@ -33,7 +34,7 @@ export default function BookRegister() {
             }}
             open={open}
             onClose={handleClose}
-            children={<RegisterBook submit='create'/>}
+            children={<RegisterBook setIsActive={setOpen} submit='create'/>}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
           />

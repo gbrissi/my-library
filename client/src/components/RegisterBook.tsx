@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import {Button, FormControl, InputLabel, styled, Input, Icon,  Fade} from '@mui/material'
-import MenuBookIcon from '@mui/icons-material/MenuBook';
 import axios from 'axios'
+
+import {Button, FormControl, InputLabel, styled, Input, Icon,  Fade, IconButton} from '@mui/material'
+
+import CloseIcon from '@mui/icons-material/Close'
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 import AlertMessage from './AlertMessage';
 
 
@@ -28,6 +31,7 @@ import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 
 export default function RegisterBook(props: any) {
     const [showComp, setShowComp] = useState('')
+    const [isActive, setIsActive] = useState(false)
 
     async function createBook() {
 
@@ -75,9 +79,6 @@ export default function RegisterBook(props: any) {
     }
     
     async function editBook(bookContent: any) {
-        
-        console.log(bookContent)
-
         const isbn = document.getElementById('isbn') as HTMLFormElement
         const title = document.getElementById('title') as HTMLFormElement
         const subtitle = document.getElementById('subtitle') as HTMLFormElement
@@ -153,6 +154,14 @@ export default function RegisterBook(props: any) {
                 </Icon>
                 <Container>
                     <Form>
+                        <CloseContainer>
+                            <IconButton onClick={() => {
+                                isActive ? setIsActive(false) : setIsActive(true)
+                                props.setIsActive(isActive)
+                            }}>
+                                <CloseIcon sx={{color: 'gray'}}/>
+                            </IconButton>
+                        </CloseContainer>
                         <FormControl sx={{width: '100%', marginBottom: '25px'}}>
                             <InputLabel>ISBN-10 (only numbers)</InputLabel>
                             <ISBNInput required id='isbn' type='number' onInput={(event) => maxLength(event, 10)} placeholder='9780439023481'/>
@@ -203,6 +212,16 @@ export default function RegisterBook(props: any) {
 
 const Form = styled('form')`
     width: 100%;
+`
+
+const CloseContainer = styled('div')`
+  position: relative;
+  top: -30px;
+  left: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 `
 
 const CustomButton = styled(Button)`
