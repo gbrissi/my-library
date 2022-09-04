@@ -91,7 +91,7 @@ export default function Header() {
               {disableScrolling(true)}
               <Modal>
                 <NoContainer onClick={async () => {await setActive(false), disableScrolling(false)}}></NoContainer>
-                <Login/>
+                <Login setIsClosed={setActive}/>
               </Modal>
             </>
             }

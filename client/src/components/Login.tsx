@@ -4,19 +4,21 @@ import {useNavigate} from 'react-router-dom'
 import axios from 'axios';
 
 
-import LockIcon from '@mui/icons-material/Lock';
 import {styled} from '@mui/material/styles'
 
 import {Button, InputLabel, OutlinedInput, InputAdornment, Fade, Icon, bottomNavigationActionClasses} from '@mui/material'
+import LockIcon from '@mui/icons-material/Lock';
+import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 var setDisable = false
 var visibility = false
-export default function Login() {
+export default function Login(props: any) {
 
     const navigate = useNavigate()
+    const [isClosed, setIsClosed] = useState(false)
     const [isError, setIsError] = useState(false);
     const [isDisabled, setIsDisabled] = useState(false);
     const [isValid, setIsValid] = useState(true);
@@ -51,7 +53,6 @@ export default function Login() {
     }
 
     async function postData(): Promise<boolean> {
-
         const username = document.getElementById('user') as HTMLFormElement
         const password = document.getElementById('password') as HTMLFormElement
         const usernamePassword = JSON.stringify({'username': username.value, 'password': password.value}) 
@@ -103,6 +104,14 @@ export default function Login() {
                 </div>
             </Icon>
             <FormContainer>
+                <CloseContainer>
+                    <IconButton onClick={() => {
+                        isClosed ? setIsClosed(false) : setIsClosed(true)
+                        props.setIsClosed(isClosed)
+                    }}>
+                        <CloseIcon sx={{color: 'gray', fontSize: '1.2rem'}}/>
+                    </IconButton>
+                </CloseContainer>
                 <InputContainer>
                     <InputErrorCode>
                     <InputLabel sx={{alignSelf: 'end'}}>User</InputLabel>
@@ -148,6 +157,15 @@ export default function Login() {
     </Fade>
   )
 }
+
+const CloseContainer = styled('div')`
+    position: absolute;
+    top: 92px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+`
 
 const InputErrorCode = styled('div')`
     display: flex;
