@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Book from './Book';
 
 import bookImg from '../assets/images/1984-book.jpg'
@@ -78,7 +78,8 @@ export default function Library(props: any) {
             author={book.author}
             />
         </Grid>
-      )}
+      )
+    }
     </Grid>
   )
 }

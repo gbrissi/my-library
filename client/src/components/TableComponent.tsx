@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios';
 
-import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Modal} from '@mui/material'
+import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Modal, Skeleton} from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import RegisterBook from './RegisterBook';
@@ -74,16 +74,28 @@ export default function TableComponent(props: any) {
         </TableHead>
         <TableBody>
           {
-            booksData.map(book => 
+            booksData.length > 0 ? (booksData.map(book => 
               <TableRow key={book.isbn}>
                 <TableCell align='left'>{book.isbn}</TableCell>
                 <TableCell align='center'>{book.title}</TableCell>
                 <TableCell align='center'>{book.subtitle}</TableCell>
                 <TableCell align='center'>{book.author}</TableCell>
                 <TableCell align='center'>{book.quantity}</TableCell>
-                <TableCell align='center'><div>
+                <TableCell align='center'><div style={{display: 'flex', justifyContent: 'center'}}>
                     <EditIcon onClick={() => {setBookValue(book), console.log(bookValue), handleOpen()}} sx={{marginRight: '24px', cursor:'pointer', fontSize: '1.8rem', backgroundColor:'#DAA520', color:'white', borderRadius: '7px', "&:hover": {background: "#fcbf26", transform: "scale(1.1)"}}}/>
                     <DeleteIcon onClick={() => {delBook(book.id)}} sx={{cursor:'pointer', backgroundColor: '#C70039', color:'white', fontSize: '1.8rem', borderRadius: '7px', "&:hover": {background: "#ff0048", transform: "scale(1.1)"}}}/>
+                </div></TableCell>
+              </TableRow>
+            )) : (
+              <TableRow key={'none'}>
+                <TableCell align='left'><Skeleton variant="rectangular" sx={{width: '100%'}}/></TableCell>
+                <TableCell align='center'><Skeleton variant="rectangular" sx={{width: '100%'}}/></TableCell>
+                <TableCell align='center'><Skeleton variant="rectangular" sx={{width: '100%'}}/></TableCell>
+                <TableCell align='center'><Skeleton variant="rectangular" sx={{width: '100%'}}/></TableCell>
+                <TableCell align='center'><Skeleton variant="rectangular" sx={{width: '100%'}}/></TableCell>
+                <TableCell align='center'><div style={{display: 'flex', justifyContent: 'center'}}>
+                    <EditIcon sx={{marginRight: '24px', fontSize: '1.8rem', backgroundColor:'lightgray', color:'white', borderRadius: '7px'}}/>
+                    <DeleteIcon sx={{backgroundColor: 'lightgray', color:'white', fontSize: '1.8rem', borderRadius: '7px'}}/>
                 </div></TableCell>
               </TableRow>
             )

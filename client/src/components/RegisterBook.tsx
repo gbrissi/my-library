@@ -52,13 +52,18 @@ export default function RegisterBook(props: any) {
             data: bookRegisterObject
         };
 
-        await axios(options).then(res => {
-            if(res.data == 'Book created with success!') {
-                setShowComp('updated')
-            } else {
-                setShowComp('error')
-            }
-        })
+        if(isbn.value.length < 10 || title.value.length == 0 || subtitle.value.length == 0 || author.value.length == 0 || publishingCompany.value.length == 0 || quantity.value.length == 0) {
+            setShowComp('error')
+        } else {
+            await axios(options).then(res => {
+                if(res.data == 'Book created with success!') {
+                    setShowComp('updated')
+                } else {
+                    setShowComp('error')
+                }
+            })
+        }
+
 
         isbn.value = null;
         title.value = ''
@@ -95,16 +100,20 @@ export default function RegisterBook(props: any) {
             data: bookRegisterObject
         };
 
-        await axios(options).then(res => {
-            if(res.data = 'Book updated with success!') {
-                setShowComp('updated')
-            } else {
-                setShowComp('error')
-            }
-        })
+        if(isbn.value.length < 10 || title.value.length == 0 || subtitle.value.length == 0 || author.value.length == 0 || publishingCompany.value.length == 0 || quantity.value.length == 0) {
+            setShowComp('error')
+        } else {
+            await axios(options).then(res => {
+                if(res.data = 'Book updated with success!') {
+                    setShowComp('updated')
+                } else {
+                    setShowComp('error')
+                }
+            })
+        }
     }
 
-    function changeShowState() {
+    const changeShowState = () => {
         if(showComp == 'updated' || 'error') {
             setTimeout(() => {
                 setShowComp('')
@@ -179,7 +188,7 @@ export default function RegisterBook(props: any) {
                                 console.log('No parameters')
                             };
                             changeShowState();
-                        }} variant='contained'>Submit</CustomButton>
+                        }} type='button' variant='contained'>Submit</CustomButton>
                     </Form>
                     {showComp == 'updated' && 
                     <AlertMessage message='Data has sucessfully been updated!' severity='success'/>
