@@ -1,4 +1,4 @@
-import { Alert } from '@mui/material';
+import {Alert} from '@mui/material';
 import {styled} from '@mui/material/styles'
 
 export default function AlertMessage(props: any) {

@@ -1,7 +1,10 @@
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0;
+const port = process.env.PORT || 8080;
 
 const express = require('express')
 const app = express()
+app.use(express.json())
+
 const bcrypt = require('bcrypt')
 
 const User = require('./db/models/User')
@@ -9,20 +12,14 @@ const Book = require('./db/models/Book');
 const LoanReturn = require('./db/models/LoanReturn');
 
 const setupDb = require('./db/_database')
-
-const cors = require('cors');
-
 setupDb();
 
+const cors = require('cors');
 const corsOption = {
     origin: ['http://localhost:3000'],
 };
-
-//if you want in every domain then
-app.use(express.json())
 app.use(cors(corsOption));
 
-const port = process.env.PORT || 8080;
 
 async function main() {
     
@@ -30,7 +27,6 @@ async function main() {
    const books = await Book.query();
    const users = await User.query();
 
-   //API
    app.get('/', (req, res) => {
         try {
             res.status(200).send(users)
@@ -125,15 +121,6 @@ async function main() {
 }
 
 main()
-
-/*
-    main()
-    .then(() => db.destroy())
-    .catch((err) => {
-        console.error(err);
-        return db.destroy();
-        });
-*/
 
 app.listen(port, () => {
     console.log('The server is running in this following port:', port)

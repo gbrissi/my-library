@@ -1,8 +1,6 @@
-import React from 'react'
-
 import {styled} from '@mui/material/styles';
 
-import { Card, Grid, Typography, Chip, Button } from '@mui/material';
+import {Card, Typography, Button} from '@mui/material';
 
 export default function Book(props: any) {
   return (
