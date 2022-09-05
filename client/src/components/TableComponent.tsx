@@ -110,7 +110,7 @@ export default function TableComponent(props: any) {
               }}
               open={open}
               onClose={handleClose}
-              children={<RegisterBook bookInfo={bookValue} submit='edit'/>}
+              children={<RegisterBook setIsActive={setOpen} bookInfo={bookValue} submit='edit'/>}
               aria-labelledby="modal-register-book"
             />
           }

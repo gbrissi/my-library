@@ -6,7 +6,7 @@ import axios from 'axios';
 
 import {styled} from '@mui/material/styles'
 
-import {Button, InputLabel, OutlinedInput, InputAdornment, Fade, Icon, bottomNavigationActionClasses} from '@mui/material'
+import {Button, InputLabel, OutlinedInput, InputAdornment, Fade, Icon} from '@mui/material'
 import LockIcon from '@mui/icons-material/Lock';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
@@ -17,7 +17,6 @@ var setDisable = false
 export default function Login(props: any) {
 
     const navigate = useNavigate()
-    const [isClosed, setIsClosed] = useState(false)
     const [isError, setIsError] = useState(false);
     const [isDisabled, setIsDisabled] = useState(false);
     const [isValid, setIsValid] = useState(true);
@@ -70,6 +69,7 @@ export default function Login(props: any) {
                         }
                     }
                 }
+                props.setIsClosed(false)
                 navigateDash();
             } else {
                 username.value = ''
@@ -96,8 +96,7 @@ export default function Login(props: any) {
             <FormContainer>
                 <CloseContainer>
                     <IconButton onClick={() => {
-                        isClosed ? setIsClosed(false) : setIsClosed(true)
-                        props.setIsClosed(isClosed)
+                        props.setIsClosed(false)
                     }}>
                         <CloseIcon sx={{color: 'gray', fontSize: '1.2rem'}}/>
                     </IconButton>
@@ -139,7 +138,7 @@ export default function Login(props: any) {
                 }
                 {
                     isDisabled &&
-                    <SubmitButton disabled={true} variant="contained">ENTER</SubmitButton>
+                    <SubmitButton disabled={true} variant="contained">Enter</SubmitButton>
                 }
                 <ForgotPassword>Forgot the password?</ForgotPassword>
             </FormContainer>

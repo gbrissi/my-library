@@ -31,7 +31,6 @@ import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 
 export default function RegisterBook(props: any) {
     const [showComp, setShowComp] = useState('')
-    const [isActive, setIsActive] = useState(false)
 
     async function createBook() {
 
@@ -156,8 +155,7 @@ export default function RegisterBook(props: any) {
                     <Form>
                         <CloseContainer>
                             <IconButton onClick={() => {
-                                isActive ? setIsActive(false) : setIsActive(true)
-                                props.setIsActive(isActive)
+                                props.setIsActive(false)
                             }}>
                                 <CloseIcon sx={{color: 'gray'}}/>
                             </IconButton>
