@@ -6,6 +6,7 @@ const app = express()
 app.use(express.json())
 
 const bcrypt = require('bcrypt')
+const {authUser} = require('./auth.js')
 
 const User = require('./db/models/User')
 const Book = require('./db/models/Book');

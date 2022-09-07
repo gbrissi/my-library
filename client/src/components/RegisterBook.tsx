@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
+import mockImage from '../assets/images/1984-book.jpg'
 import {Button, FormControl, InputLabel, styled, Input, Icon,  Fade, IconButton} from '@mui/material'
 
 import CloseIcon from '@mui/icons-material/Close'
@@ -183,6 +184,17 @@ export default function RegisterBook(props: any) {
                         <FormControl sx={{width: '100%', marginBottom: '25px'}}>
                             <InputLabel>Quantity</InputLabel>
                             <Input required id='quantity' type='number' onInput={(event) => maxLength(event, 4)} placeholder='5'/>
+                        </FormControl>
+                        <FormControl sx={{width: '100%', marginBottom: '25px'}}>
+                            <InputLabel>Book Image:</InputLabel>
+                            <Button component='label' variant='outlined' sx={{height: '150px', border: '1px solid gray'}}>    
+                                <input
+                                    style={{width: '100%', height: '100%'}}
+                                    type='file'
+                                    hidden
+                                />
+                                <img style={{lineHeight: '0', height: '100%'}} src={mockImage}/>
+                            </Button>
                         </FormControl>
                         <CustomButton onClick={async () => {
                             if (props.submit == 'create') {
